@@ -4,9 +4,14 @@
             'wght' 700,
             'GRAD' 200,
             'opsz' 48;
-    color: white;
+
 }
 
 #logo {
     margin-right: 10px;
+}
+
+
+.search {
+    color: white;
 }
