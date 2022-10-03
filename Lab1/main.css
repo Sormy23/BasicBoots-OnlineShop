@@ -8,10 +8,17 @@
 }
 
 #logo {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
+#carousel {
+    margin-top: 30px;
+}
 
 .search {
     color: white;
+}
+
+.navbar-brand {
+    margin-right: 15px;
 }
