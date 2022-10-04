@@ -1,3 +1,7 @@
+* {
+    font-family: 'Silkscreen', cursive;
+}
+
 .material-symbols-outlined {
     font-variation-settings:
             'FILL' 0,
@@ -11,8 +15,8 @@
     margin-right: 5px;
 }
 
-#carousel {
-    margin-top: 30px;
+#carouselExampleDark {
+    margin-top: 5vw;
 }
 
 .search {
@@ -20,7 +24,7 @@
 }
 
 .navbar-brand {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 #heading {
@@ -29,6 +33,7 @@
     font-weight: bold;
 }
 
-#carousel {
-    margin-top: 5vw;
+.navbar-toggler, .navbar-toggler:focus, .navbar-toggler:active {
+    border: none !important;
+    box-shadow: none !important;
 }
