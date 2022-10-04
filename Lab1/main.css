@@ -64,10 +64,6 @@ a:hover, a:focus {
 }
 
 
-.product {
-    margin-top: 20vm !important;
-}
-
 .form-control {
     background: #212529;
     border-color: #545454;
@@ -78,5 +74,20 @@ a:hover, a:focus {
 }
 
 footer {
-    background: black;
+    background: #212529;
+}
+
+#product {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+
+.price {
+    margin-bottom: 2vw;
+    margin-top: 1vw;
+    font-weight: bold;
+}
+
+.products {
+    margin-top: 4vw !important;
 }
