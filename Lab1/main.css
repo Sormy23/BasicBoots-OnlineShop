@@ -65,7 +65,7 @@ a:hover, a:focus {
 
 
 .product {
-
+    margin-top: 20vm !important;
 }
 
 .form-control {
@@ -79,8 +79,4 @@ a:hover, a:focus {
 
 footer {
     background: black;
-}
-
-#footer {
-
 }
