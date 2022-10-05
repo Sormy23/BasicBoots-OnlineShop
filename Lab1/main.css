@@ -91,3 +91,21 @@ footer {
 .products {
     margin-top: 4vw !important;
 }
+
+#count_badge {
+    padding: 0px !important;
+}
+
+.my_badge {
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+

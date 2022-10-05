@@ -1,13 +1,14 @@
 var shopping_cart = []
-localStorage.setItem("user", JSON.stringify(shopping_cart))
+if (JSON.parse(window.sessionStorage.getItem('user')) === null) {
+    sessionStorage.setItem("user", JSON.stringify(shopping_cart))
+}
 
 function addItem(item) {
-    shopping_cart = JSON.parse(window.localStorage.getItem('user'))
-    var amount = 0
+    shopping_cart = JSON.parse(window.sessionStorage.getItem('user'))
     var foundItem = false
     //If item in shoppingcart +1 else
     if (shopping_cart.length === 0) {
-        addItemToList(item);
+        addItemToList(item)
     } else {
 
         for (var i = 0; i < shopping_cart.length; i++) {
@@ -15,7 +16,6 @@ function addItem(item) {
                 shopping_cart[i].amount += 1
                 foundItem = true
             }
-            amount += shopping_cart[i].amount
         }
         if (!foundItem) {
             addItemToList(item)
@@ -23,13 +23,32 @@ function addItem(item) {
 
     }
 
-    console.log(shopping_cart)
-    console.log(amount)
+    set_amount()
+
     //Update amount badge
 
-    localStorage.setItem("user", JSON.stringify(shopping_cart))
+    //document.getElementsByClassName('count_badge').innerHTML = amount
+
+    sessionStorage.setItem("user", JSON.stringify(shopping_cart))
 }
+
 
 function addItemToList(item) {
     shopping_cart.push({itemID: item, amount: 1})
 }
+
+
+function set_amount() {
+    var amount = 0
+    if (shopping_cart.length === 0) {
+        amount += 1
+    } else {
+
+        for (var i = 0; i < shopping_cart.length; i++) {
+            amount += shopping_cart[i].amount
+        }
+    }
+
+    document.getElementById("count_badge").innerHTML = amount
+}
+
