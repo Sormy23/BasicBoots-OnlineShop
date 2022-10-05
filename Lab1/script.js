@@ -40,15 +40,13 @@ function addItemToList(item) {
 
 function set_amount() {
     var amount = 0
-    if (shopping_cart.length === 0) {
-        amount += 1
-    } else {
-
+    if (shopping_cart.length !== 0) {
         for (var i = 0; i < shopping_cart.length; i++) {
             amount += shopping_cart[i].amount
         }
-    }
 
-    document.getElementById("count_badge").innerHTML = amount
+        document.getElementById("count_badge").innerHTML = amount
+
+    }
 }
 
