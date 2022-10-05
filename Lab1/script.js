@@ -35,18 +35,29 @@ function addItem(item) {
 
 function addItemToList(item) {
     shopping_cart.push({itemID: item, amount: 1})
+    console.log("add")
 }
 
 
 function set_amount() {
+    var shop = []
+    if (JSON.parse(window.sessionStorage.getItem('user')) === null) {
+        sessionStorage.setItem("user", JSON.stringify(shop))
+        console.log("empty it")
+    }
+
+    shop = JSON.parse(window.sessionStorage.getItem('user'))
+    console.log("set amount")
     var amount = 0
-    if (shopping_cart.length !== 0) {
-        for (var i = 0; i < shopping_cart.length; i++) {
-            amount += shopping_cart[i].amount
+    if (shop.length !== 0) {
+        for (var i = 0; i < shop.length; i++) {
+            amount += shop[i].amount
         }
 
         document.getElementById("count_badge").innerHTML = amount
 
     }
+
+    console.log(amount)
 }
 
