@@ -11,11 +11,15 @@ function set_amount() {
         sessionStorage.setItem("user", JSON.stringify(cart))
     }
 
+    cart = JSON.parse(sessionStorage.getItem("user"))
+
     for (let i = 0; i < cart.length; i++) {
         amount += (JSON.parse(sessionStorage.getItem("user")))[i].amount
     }
 
-    document.getElementById("count_badge").innerHTML = amount.toString(100)
+    if (amount !== 0) {
+        document.getElementById("count_badge").innerHTML = amount
+    }
 }
 
 
@@ -42,4 +46,6 @@ function addItem(item) {
     }
 
     sessionStorage.setItem("user", JSON.stringify(cart))
+
+    set_amount()
 }
