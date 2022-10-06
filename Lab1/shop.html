@@ -37,7 +37,7 @@
             <li class="nav-item">
               <a class="nav-link" href="./imprint.html">Impressum</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ondrop="drop(event)" ondragover="allowDrop(event)">
               <a class="nav-link" href="./warenkorb.html"><span id="shopping-cart-logo" class="material-symbols-outlined d-inline-block align-text-top">shopping_cart</span><span id="count_badge" class="my_badge badge-pill badge-light"></span></a>
             </li>
           </ul>
@@ -55,7 +55,7 @@
     <div class="container text-center " id="product">
       <div class="row row-cols-1 row-cols-sm-3 products">
         <div class="col">
-          <img src="media/shop_img1.png" width="200" height="200" alt="shoes">
+          <img id="1" src="media/shop_img1.png" ondragstart="dragStart(event)" width="200" height="200" draggable="true" alt="shoes">
         </div>
         <div class="col">
           <h3>Laufschuhe</h3>
@@ -71,7 +71,7 @@
 
       <div class="row row-cols-1 row-cols-sm-3 products">
         <div class="col">
-          <img src="media/shop_img2.png" width="200" height="200" alt="shoes">
+          <img id="2" src="media/shop_img2.png" ondragstart="dragStart(event)" width="200" height="200" draggable="true" alt="shoes">
         </div>
         <div class="col">
           <h3>Winterstiefel</h3>
@@ -88,7 +88,7 @@
 
       <div class="row row-cols-1 row-cols-sm-3 products">
         <div class="col">
-          <img src="media/shop_img3.png" width="200" height="200" alt="shoes">
+          <img id="3" ondragstart="dragStart(event)" src="media/shop_img3.png" width="200" height="200" alt="shoes" draggable="true">
         </div>
         <div class="col">
           <h3>Moomboots</h3>
