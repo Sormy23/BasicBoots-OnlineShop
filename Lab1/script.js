@@ -35,7 +35,7 @@ function addItem(item) {
     cart = JSON.parse(sessionStorage.getItem("user"))
 
     for (let i = 0; i < cart.length; i++) {
-        if (cart[i].ID == item) {
+        if (cart[i].ID === item) {
             exists = true
             cart[i].amount += 1
         }

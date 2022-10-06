@@ -29,7 +29,7 @@
 
 #heading {
     text-align: center;
-    margin-top: 5vw;
+    margin-top: 15vh;
     font-weight: bold;
 }
 
@@ -78,7 +78,7 @@ footer {
 }
 
 #product {
-    margin-top: 3vw;
+    margin-top: 10vh;
     margin-bottom: 3vw;
 }
 
@@ -89,11 +89,11 @@ footer {
 }
 
 .products {
-    margin-top: 4vw !important;
+    margin-top: 5vw !important;
 }
 
 #count_badge {
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .my_badge {
@@ -111,7 +111,7 @@ footer {
 .error {
     font-size: 100px;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 200px !important;
     margin-bottom: 200px;
 }
 
