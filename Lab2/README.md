@@ -21,6 +21,3 @@ You may be interested in other spring security articles:
 [Spring Boot Security Hibernate Login](http://www.devglan.com/spring-security/spring-boot-security-hibernate-login-example)
 
 [Securing Actuator Endpoints with Spring Security](http://www.devglan.com/spring-security/securing-spring-boot-actuator-endpoints-with-spring-security)
-
-
-test
