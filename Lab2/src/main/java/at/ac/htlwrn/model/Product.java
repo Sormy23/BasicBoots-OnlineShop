@@ -2,6 +2,7 @@ package at.ac.htlwrn.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -10,6 +11,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    //n:m-Beziehung
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    Set<OrderedProducts> purchases;
+
+    //end
 
     @Column(nullable = false)
     private String name;

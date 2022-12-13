@@ -1,15 +1,25 @@
 package at.ac.htlwrn.model;
 
+import org.hibernate.criterion.Order;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "productOrder")
-public class ProductOrder {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    //n:m-Beziehung
+
+    @OneToMany(mappedBy = "productOrder", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    Set<OrderedProducts> products;
+
+    //end
 
     @Column(nullable = false)
     private String anrede;
