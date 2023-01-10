@@ -1,10 +1,7 @@
 package at.ac.htlwrn.model;
 
-import org.hibernate.criterion.Order;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Entity
 @Table(name = "productOrder")
@@ -13,11 +10,6 @@ public class PurchaseOrder {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-
-    //n:m-Beziehung
-
-    @OneToMany(mappedBy = "productOrder", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    Set<OrderedProducts> products;
 
     //end
 
@@ -31,7 +23,13 @@ public class PurchaseOrder {
     private String name;
 
     @Column(nullable = false)
-    private String adress; //full adress needed
+    private String street;
+
+    @Column(nullable = false)
+    private String zipCode;
+
+    @Column(nullable = false)
+    private String city;
 
     @Column(nullable = false)
     private Timestamp date;
@@ -40,8 +38,8 @@ public class PurchaseOrder {
     private float price;
 
     @Column
-    private Timestamp erledigt;
+    private Timestamp finished;
 
     @Column
-    private Timestamp storniert;
+    private Timestamp canceled;
 }

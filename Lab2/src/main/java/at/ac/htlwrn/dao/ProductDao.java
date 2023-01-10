@@ -8,4 +8,11 @@ import java.util.Optional;
 @Repository
 public interface ProductDao extends CrudRepository<Product, Long> {
 
+    @Override
+    Optional<Product> findById(Long aLong);
+
+    @Override
+    <S extends Product> S save(S entity);
+
+    Optional<Product> findByName(String name);
 }
