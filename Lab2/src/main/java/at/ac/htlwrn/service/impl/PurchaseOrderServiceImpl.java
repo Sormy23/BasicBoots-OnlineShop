@@ -37,7 +37,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Override
     public PurchaseOrder save(PurchaseOrderDto order) {
         Validate.notNull(order);
-        Validate.notNull(order.getId(), "order must not be null")
+        Validate.notNull(order.getId(), "order must not be null");
 
         logger.info("Saving Order new order {}", order.getId());
         return null;
