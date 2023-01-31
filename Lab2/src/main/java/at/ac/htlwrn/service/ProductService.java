@@ -9,17 +9,16 @@ public interface ProductService {
     /**
      * Save new product
      * @param product {@link at.ac.htlwrn.dto.ProductDto} with product details
-     * @return instance of {@link at.ac.htlwrn.model.User}
+     * @return instance of {@link Product}
      */
     Product save(ProductDto product);
 
     /**
      * Updates a product
      * @param product of {@link Product} product data for update
-     * @return ProductDto with updated data
      */
 
-    ProductDto update(ProductDto product);
+    void update(ProductDto product);
 
     /**
      * deactivates a product

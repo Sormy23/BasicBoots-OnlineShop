@@ -13,8 +13,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto update(ProductDto product) {
-        return null;
+    public void update(ProductDto product) {
     }
 
     @Override
