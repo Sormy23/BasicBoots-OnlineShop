@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,26 +36,79 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     private PurchaseOrderDao purchaseOrderDao;
 
     @Override
-    public PurchaseOrder save(PurchaseOrderDto order) {
-        Validate.notNull(order);
-        Validate.notNull(order.getId(), "order must not be null");
+    public PurchaseOrder save(PurchaseOrderDto orderDto) {
+        Validate.notNull(orderDto);
+        Validate.notNull(orderDto.getId(), "orderDto must not be null");
 
-        logger.info("Saving Order new order {}", order.getId());
-        return null;
+        logger.info("Saving Order new orderDto {}", orderDto.getId());
+
+        PurchaseOrder newOrder = new PurchaseOrder();
+        newOrder.setAnrede(orderDto.getAnrede());
+        newOrder.setCity(orderDto.getCity());
+        newOrder.setCanceled(orderDto.getCanceled());
+        newOrder.setDate(orderDto.getDate());
+        newOrder.setName(orderDto.getName());
+        newOrder.setFinished(orderDto.getFinished());
+        newOrder.setPrice(orderDto.getPrice());
+        newOrder.setStreet(orderDto.getStreet());
+        newOrder.setVorname(orderDto.getVorname());
+        newOrder.setName(orderDto.getName());
+
+        return purchaseOrderDao.save(newOrder);
     }
 
     @Override
     public List<PurchaseOrder> find(boolean storniert, boolean erledigt) {
-        return null;
+        if(storniert && erledigt) {
+            logger.debug("Find all Orders");
+            return (List<PurchaseOrder>) purchaseOrderDao.findAll();
+        } else if (erledigt) {
+            logger.debug("Find all Orders where Finished is set");
+            return purchaseOrderDao.findAllByCanceledIsNotNull();
+        } else if (storniert) {
+            logger.debug("Find all Orders where canceled is set");
+            return purchaseOrderDao.findAllByFinishedIsNotNull();
+        } else {
+            logger.debug("Find all Orders wher canceled and finished is Null");
+            return purchaseOrderDao.findAllByCanceledIsNullAndFinishedIsNull();
+        }
     }
 
     @Override
     public void cancel(PurchaseOrderDto orderDto) {
+        Validate.notNull(orderDto);
+        Validate.notNull(orderDto.getId(), "orderDto.id must not be null!");
 
+        Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
+        if (order.isPresent()) {
+            if (order.get().getFinished() != null) {
+                logger.debug("Cancel order with id {}", order.get().getId());
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                order.get().setCanceled(timestamp);
+            } else {
+                logger.warn("Order with id {} already finished", order.get().getId());
+            }
+        } else {
+            logger.error("Order not found! Nothing canceled");
+        }
     }
 
     @Override
     public void finish(PurchaseOrderDto orderDto) {
+        Validate.notNull(orderDto);
+        Validate.notNull(orderDto.getId(), "orderDto.id must not be null!");
 
+        Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
+        if (order.isPresent()) {
+            if (order.get().getCanceled() != null) {
+                logger.debug("Finish order with id {}", order.get().getId());
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                order.get().setFinished(timestamp);
+            } else {
+                logger.warn("Order with id {} already canceled", order.get().getId());
+            }
+        } else {
+            logger.error("Order not found! Nothing Finished");
+        }
     }
 }

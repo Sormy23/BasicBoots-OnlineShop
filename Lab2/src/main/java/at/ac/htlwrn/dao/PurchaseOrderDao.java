@@ -24,6 +24,10 @@ public interface PurchaseOrderDao extends CrudRepository<PurchaseOrder, Long> {
 
     List<PurchaseOrder> findAllByFinishedIsNotNull();
 
+    List<PurchaseOrder> findAllByCanceledIsNotNull();
+
+    List<PurchaseOrder> findAllByCanceledIsNullAndFinishedIsNull();
+
 
 
 }
