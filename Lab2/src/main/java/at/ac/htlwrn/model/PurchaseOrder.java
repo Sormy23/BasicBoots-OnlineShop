@@ -35,7 +35,7 @@ public class PurchaseOrder {
     private Timestamp date;
 
     @Column(nullable = false)
-    private float price;
+    private double price;
 
     @Column
     private Timestamp finished;
@@ -75,7 +75,7 @@ public class PurchaseOrder {
         return date;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -111,7 +111,7 @@ public class PurchaseOrder {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

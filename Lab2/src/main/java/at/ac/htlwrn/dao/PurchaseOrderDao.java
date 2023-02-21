@@ -10,12 +10,6 @@ import java.util.Optional;
 @Repository
 public interface PurchaseOrderDao extends CrudRepository<PurchaseOrder, Long> {
 
-    @Override
-    Optional<PurchaseOrder> findById(Long aLong);
-
-    @Override
-    <S extends PurchaseOrder> S save(S entity);
-
     Optional<PurchaseOrder> findByName(String name);
 
     List<PurchaseOrder> findAllByZipCode(String zipcode);

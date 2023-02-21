@@ -26,7 +26,7 @@ public class Product {
     private String desc;
 
     @Column(nullable = false)
-    private float price;
+    private double price;
 
     @Column(nullable = false)
     private String img;
@@ -47,7 +47,7 @@ public class Product {
         return name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -69,10 +69,6 @@ public class Product {
 
     //set methods
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -81,7 +77,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

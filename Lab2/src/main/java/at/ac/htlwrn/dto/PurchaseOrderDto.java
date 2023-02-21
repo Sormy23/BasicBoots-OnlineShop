@@ -20,7 +20,7 @@ public class PurchaseOrderDto {
 
     private Timestamp date;
 
-    private float price;
+    private double price;
 
     private Timestamp finished;
 
@@ -58,7 +58,7 @@ public class PurchaseOrderDto {
         return date;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -94,7 +94,7 @@ public class PurchaseOrderDto {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

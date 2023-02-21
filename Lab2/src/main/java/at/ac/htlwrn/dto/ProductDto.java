@@ -18,7 +18,7 @@ public class ProductDto {
 
     private String desc;
 
-    private float price;
+    private double price;
 
     private String img;
 
@@ -36,7 +36,7 @@ public class ProductDto {
         return name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -58,10 +58,6 @@ public class ProductDto {
 
     //set methods
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -70,7 +66,7 @@ public class ProductDto {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
