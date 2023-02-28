@@ -16,9 +16,10 @@ public interface ProductService {
     /**
      * Updates a product
      * @param product of {@link Product} product data for update
+     * @return product of {@link ProductDto}
      */
 
-    void update(ProductDto product);
+     ProductDto update(ProductDto product);
 
     /**
      * deactivates a product
@@ -38,4 +39,11 @@ public interface ProductService {
      * @return List of {@link Product} if exists, else []
      */
     List<Product> search(String searchString);
+
+    /**
+     * finds a product by id
+     * @param id id for search
+     * @return Product of {@link Product} if exists, else null
+     */
+    public Product findById(Long id);
 }

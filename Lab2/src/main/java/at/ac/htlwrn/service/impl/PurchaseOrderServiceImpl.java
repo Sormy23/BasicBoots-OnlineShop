@@ -2,6 +2,7 @@ package at.ac.htlwrn.service.impl;
 
 import at.ac.htlwrn.dao.PurchaseOrderDao;
 import at.ac.htlwrn.dto.PurchaseOrderDto;
+import at.ac.htlwrn.exception.OrderAlreadyExistsException;
 import at.ac.htlwrn.model.PurchaseOrder;
 import at.ac.htlwrn.service.PurchaseOrderService;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ import java.util.Optional;
 @Service(value = "purchaseOrderService")
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
-    private static Logger logger = LogManager.getLogger(UserServiceImpl.class);
+    private static Logger logger = LogManager.getLogger(PurchaseOrderServiceImpl.class);
 
     @Autowired
     private PurchaseOrderDao purchaseOrderDao;
@@ -42,6 +43,11 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         logger.info("Saving Order new orderDto {}", orderDto.getId());
 
+        Optional<PurchaseOrder> order = purchaseOrderDao.findByName(orderDto.getName());
+        if (order.isPresent()) {
+            logger.warn("Purchase Order {} already exists", orderDto.getName());
+            throw new OrderAlreadyExistsException("Order already exists!");
+        }
         PurchaseOrder newOrder = new PurchaseOrder();
         newOrder.setAnrede(orderDto.getAnrede());
         newOrder.setCity(orderDto.getCity());

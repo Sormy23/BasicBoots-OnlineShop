@@ -1,6 +1,7 @@
 package at.ac.htlwrn.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
