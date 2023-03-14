@@ -1,8 +1,7 @@
 package at.ac.htlwrn.model;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "productOrder")
@@ -33,16 +32,16 @@ public class PurchaseOrder {
     private String city;
 
     @Column(nullable = false)
-    private Timestamp date;
+    private Date date;
 
     @Column(nullable = false)
     private double price;
 
     @Column
-    private Timestamp finished;
+    private Date finished;
 
     @Column
-    private Timestamp canceled;
+    private Date canceled;
 
     public Long getId() {
         return id;
@@ -72,7 +71,7 @@ public class PurchaseOrder {
         return city;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -80,11 +79,11 @@ public class PurchaseOrder {
         return price;
     }
 
-    public Timestamp getCanceled() {
+    public Date getCanceled() {
         return canceled;
     }
 
-    public Timestamp getFinished() {
+    public Date getFinished() {
         return finished;
     }
 
@@ -92,7 +91,7 @@ public class PurchaseOrder {
         this.anrede = anrede;
     }
 
-    public void setCanceled(Timestamp canceled) {
+    public void setCanceled(Date canceled) {
         this.canceled = canceled;
     }
 
@@ -100,11 +99,11 @@ public class PurchaseOrder {
         this.city = city;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public void setFinished(Timestamp finished) {
+    public void setFinished(Date finished) {
         this.finished = finished;
     }
 

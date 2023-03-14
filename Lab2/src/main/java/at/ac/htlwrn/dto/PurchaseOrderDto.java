@@ -1,7 +1,7 @@
 package at.ac.htlwrn.dto;
 
 import javax.persistence.Column;
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class PurchaseOrderDto {
     private Long id;
@@ -18,13 +18,13 @@ public class PurchaseOrderDto {
 
     private String city;
 
-    private Timestamp date;
+    private Date date;
 
     private double price;
 
-    private Timestamp finished;
+    private Date finished;
 
-    private Timestamp canceled;
+    private Date canceled;
 
     public Long getId() {
         return id;
@@ -54,7 +54,7 @@ public class PurchaseOrderDto {
         return city;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -62,11 +62,11 @@ public class PurchaseOrderDto {
         return price;
     }
 
-    public Timestamp getCanceled() {
+    public Date getCanceled() {
         return canceled;
     }
 
-    public Timestamp getFinished() {
+    public Date getFinished() {
         return finished;
     }
 
@@ -74,7 +74,7 @@ public class PurchaseOrderDto {
         this.anrede = anrede;
     }
 
-    public void setCanceled(Timestamp canceled) {
+    public void setCanceled(Date canceled) {
         this.canceled = canceled;
     }
 
@@ -82,11 +82,11 @@ public class PurchaseOrderDto {
         this.city = city;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public void setFinished(Timestamp finished) {
+    public void setFinished(Date finished) {
         this.finished = finished;
     }
 

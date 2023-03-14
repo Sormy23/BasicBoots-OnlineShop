@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.Validate;
@@ -74,16 +75,30 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deactivate(Long id) {
+        logger.info("Deactivate Produt {}", id);
+        Product product = findById(id); //id gets validated here
 
+        if (product != null) {
+            Date date = new Date();
+            date.setDate(date.getDate() - 1);
+            date.setHours(3);
+            date.setMinutes(0);
+            date.setSeconds(0);
+            product.setGueltig_bis(date); // Datum auf gestern setzen
+            productDao.save(product);
+        }
     }
 
     @Override
     public List<Product> findAll() {
+        logger.info("Search for all products!");
         return null;
     }
 
     @Override
     public List<Product> search(String searchString) {
+        Validate.notNull(searchString);
+        logger.info("Find Product by SearchString: {}", searchString);
         return null;
     }
 }

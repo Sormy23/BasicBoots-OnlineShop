@@ -7,26 +7,14 @@ import at.ac.htlwrn.model.PurchaseOrder;
 import at.ac.htlwrn.service.PurchaseOrderService;
 import org.springframework.stereotype.Service;
 
-import at.ac.htlwrn.exception.UserAlredyExistsException;
-import at.ac.htlwrn.model.User;
-import at.ac.htlwrn.service.UserService;
 import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service(value = "purchaseOrderService")
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
@@ -89,8 +77,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         if (order.isPresent()) {
             if (order.get().getFinished() != null) {
                 logger.debug("Cancel order with id {}", order.get().getId());
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                order.get().setCanceled(timestamp);
+                Date date = new Date();
+                order.get().setFinished(date);
             } else {
                 logger.warn("Order with id {} already finished", order.get().getId());
             }
@@ -108,8 +96,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         if (order.isPresent()) {
             if (order.get().getCanceled() != null) {
                 logger.debug("Finish order with id {}", order.get().getId());
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                order.get().setFinished(timestamp);
+                Date date = new Date();
+                order.get().setFinished(date);
             } else {
                 logger.warn("Order with id {} already canceled", order.get().getId());
             }

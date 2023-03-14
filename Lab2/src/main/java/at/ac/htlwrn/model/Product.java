@@ -1,7 +1,7 @@
 package at.ac.htlwrn.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -32,10 +32,10 @@ public class Product {
     private String img;
 
     @Column
-    private Timestamp gueltig_ab;
+    private Date gueltig_ab;
 
     @Column
-    private Timestamp gueltig_bis;
+    private Date gueltig_bis;
 
     //Get methods
 
@@ -59,11 +59,11 @@ public class Product {
         return img;
     }
 
-    public Timestamp getGueltig_ab() {
+    public Date getGueltig_ab() {
         return gueltig_ab;
     }
 
-    public Timestamp getGueltig_bis() {
+    public Date getGueltig_bis() {
         return gueltig_bis;
     }
 
@@ -85,11 +85,11 @@ public class Product {
         this.img = img;
     }
 
-    public void setGueltig_ab(Timestamp gueltig_ab) {
+    public void setGueltig_ab(Date gueltig_ab) {
         this.gueltig_ab = gueltig_ab;
     }
 
-    public void setGueltig_bis(Timestamp gueltig_bis) {
+    public void setGueltig_bis(Date gueltig_bis) {
         this.gueltig_bis = gueltig_bis;
     }
 }

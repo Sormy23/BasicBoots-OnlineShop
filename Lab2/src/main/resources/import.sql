@@ -1,5 +1,5 @@
-INSERT INTO Product (name, desc, price, img, gueltig_ab, gueltig_bis) VALUES ('Schuh1', 'uhhhh very 4lagig', 27.50, '../toilet.jpg', 1672580821, 1696510021);
-INSERT INTO Product (name, desc, price, img, gueltig_ab, gueltig_bis) VALUES ('Schuh2', 'uhhhh very 4lagig', 16.50, '../gaming.jpg', 1696510021, 1672580821);
+INSERT INTO Product (name, desc, price, img, gueltig_ab, gueltig_bis) VALUES ('Schuh1', 'uhhhh very 4lagig', 27.50, '../toilet.jpg', '2021-03-03', '2024-03-03');
+INSERT INTO Product (name, desc, price, img, gueltig_ab, gueltig_bis) VALUES ('Schuh2', 'uhhhh very 4lagig', 16.50, '../gaming.jpg', '2022-03-03', '2024-03-03');
 INSERT INTO Product (name, desc, price, img) VALUES ('Schuh3', 'uhhhh very 4lagig', 200.50, '../joa.jpg');
 
 /*
