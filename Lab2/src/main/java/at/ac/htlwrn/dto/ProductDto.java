@@ -2,10 +2,6 @@ package at.ac.htlwrn.dto;
 
 import at.ac.htlwrn.model.OrderedProducts;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,9 +18,9 @@ public class ProductDto {
 
     private String img;
 
-    private Date gueltig_ab;
+    private Date gueltigAb;
 
-    private Date gueltig_bis;
+    private Date gueltigBis;
 
     //Get methods
 
@@ -48,12 +44,12 @@ public class ProductDto {
         return img;
     }
 
-    public Date getGueltig_ab() {
-        return gueltig_ab;
+    public Date getGueltigAb() {
+        return gueltigAb;
     }
 
-    public Date getGueltig_bis() {
-        return gueltig_bis;
+    public Date getGueltigBis() {
+        return gueltigBis;
     }
 
     //set methods
@@ -74,11 +70,11 @@ public class ProductDto {
         this.img = img;
     }
 
-    public void setGueltig_ab(Date gueltig_ab) {
-        this.gueltig_ab = gueltig_ab;
+    public void setGueltigAb(Date gueltigAb) {
+        this.gueltigAb = gueltigAb;
     }
 
-    public void setGueltig_bis(Date gueltig_bis) {
-        this.gueltig_bis = gueltig_bis;
+    public void setGueltigBis(Date gueltigBis) {
+        this.gueltigBis = gueltigBis;
     }
 }

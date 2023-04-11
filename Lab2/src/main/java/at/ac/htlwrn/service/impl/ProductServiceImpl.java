@@ -43,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
         newProduct.setDesc(product.getDesc());
         newProduct.setName(product.getName());
         newProduct.setPrice(product.getPrice());
-        newProduct.setGueltigAb(product.getGueltig_ab());
-        newProduct.setGueltigBis(product.getGueltig_bis());
+        newProduct.setGueltigAb(product.getGueltigAb());
+        newProduct.setGueltigBis(product.getGueltigBis());
 
         return productDao.save(newProduct);
     }
