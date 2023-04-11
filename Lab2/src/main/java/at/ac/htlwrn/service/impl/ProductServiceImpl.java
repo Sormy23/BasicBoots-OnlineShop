@@ -3,6 +3,7 @@ package at.ac.htlwrn.service.impl;
 import at.ac.htlwrn.dao.ProductDao;
 import at.ac.htlwrn.dto.ProductDto;
 import at.ac.htlwrn.exception.ProductAlreadyExistsException;
+import at.ac.htlwrn.exception.ProductNotFoundException;
 import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.service.ProductService;
 import org.apache.logging.log4j.LogManager;
@@ -10,16 +11,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Optional;
 
-
-@Service(value = "prudctService")
+@Service(value = "productService")
 public class ProductServiceImpl implements ProductService {
 
     private static Logger logger = LogManager.getLogger(ProductServiceImpl.class);
@@ -45,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
         newProduct.setDesc(product.getDesc());
         newProduct.setName(product.getName());
         newProduct.setPrice(product.getPrice());
-        newProduct.setGueltig_ab(product.getGueltig_ab());
-        newProduct.setGueltig_bis(product.getGueltig_bis());
+        newProduct.setGueltigAb(product.getGueltig_ab());
+        newProduct.setGueltigBis(product.getGueltig_bis());
 
         return productDao.save(newProduct);
     }
@@ -75,30 +73,37 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deactivate(Long id) {
-        logger.info("Deactivate Produt {}", id);
-        Product product = findById(id); //id gets validated here
+        logger.info("Deactivate id: {}", id);
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
 
-        if (product != null) {
-            Date date = new Date();
-            date.setDate(date.getDate() - 1);
-            date.setHours(3);
-            date.setMinutes(0);
-            date.setSeconds(0);
-            product.setGueltig_bis(date); // Datum auf gestern setzen
-            productDao.save(product);
-        }
+        Optional<Product> productOpt = productDao.findById(id);
+        Product product = productOpt.orElseThrow(ProductNotFoundException::new);
+        product.setGueltigBis(cal.getTime());
+        productDao.save(product);
     }
 
     @Override
     public List<Product> findAll() {
-        logger.info("Search for all products!");
-        return null;
+        logger.info("Search for all valid products!");
+
+        Date now = new Date();
+        return new ArrayList<Product>(productDao.findAllByGueltigAbBeforeAndGueltigBisAfter(now, now));
     }
 
     @Override
     public List<Product> search(String searchString) {
         Validate.notNull(searchString);
         logger.info("Find Product by SearchString: {}", searchString);
-        return null;
+
+        Date now = new Date();
+        List<Product> productList = new ArrayList<>(productDao.findAllByGueltigAbBeforeAndGueltigBisAfter(now, now));
+
+        for (int i = 0; i < productList.size(); i++) {
+            if (!productList.get(i).getName().contains(searchString)) {
+                productList.remove(i);
+            }
+        }
+        return productList;
     }
 }

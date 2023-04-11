@@ -15,7 +15,7 @@ public class Product {
     //n:m-Beziehung
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    Set<OrderedProducts> purchases;
+    private Set<OrderedProducts> purchases;
 
     //end
 
@@ -32,10 +32,10 @@ public class Product {
     private String img;
 
     @Column
-    private Date gueltig_ab;
+    private Date gueltigAb;
 
     @Column
-    private Date gueltig_bis;
+    private Date gueltigBis;
 
     //Get methods
 
@@ -59,15 +59,31 @@ public class Product {
         return img;
     }
 
-    public Date getGueltig_ab() {
-        return gueltig_ab;
-    }
-
-    public Date getGueltig_bis() {
-        return gueltig_bis;
-    }
-
     //set methods
+
+    public Set<OrderedProducts> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(Set<OrderedProducts> purchases) {
+        this.purchases = purchases;
+    }
+
+    public Date getGueltigAb() {
+        return gueltigAb;
+    }
+
+    public void setGueltigAb(Date gueltigAb) {
+        this.gueltigAb = gueltigAb;
+    }
+
+    public Date getGueltigBis() {
+        return gueltigBis;
+    }
+
+    public void setGueltigBis(Date gueltigBis) {
+        this.gueltigBis = gueltigBis;
+    }
 
     public void setDesc(String desc) {
         this.desc = desc;
@@ -85,11 +101,4 @@ public class Product {
         this.img = img;
     }
 
-    public void setGueltig_ab(Date gueltig_ab) {
-        this.gueltig_ab = gueltig_ab;
-    }
-
-    public void setGueltig_bis(Date gueltig_bis) {
-        this.gueltig_bis = gueltig_bis;
-    }
 }

@@ -4,17 +4,16 @@ import at.ac.htlwrn.model.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ProductDao extends CrudRepository<Product, Long> {
 
-    @Override
-    Optional<Product> findById(Long aLong);
+    List<Product> findByNameIsContainingIgnoreCase(String name);
 
-    @Override
-    <S extends Product> S save(S entity);
+    List<Product> findAllByGueltigAbBeforeAndGueltigBisAfter(Date now1, Date now2);
 
     Optional<Product> findByName(String name);
 }

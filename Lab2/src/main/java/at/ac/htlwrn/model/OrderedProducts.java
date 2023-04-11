@@ -15,7 +15,7 @@ public class OrderedProducts {
     @JoinColumn(name = "product_id")
     Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "purchasOrder_id")
     PurchaseOrder purchaseOrder;
 
