@@ -1,6 +1,7 @@
 package at.ac.htlwrn.service.impl;
 
 import at.ac.htlwrn.dto.ProductDto;
+import at.ac.htlwrn.exception.UserAlredyExistsException;
 import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.service.ProductService;
 import org.junit.jupiter.api.Assertions;
@@ -41,6 +42,21 @@ public class ProductServiceImplTest {
         Assertions.assertEquals(desc, foundProduct.get().getDesc());
         Assertions.assertEquals(price, foundProduct.get().getPrice());
         Assertions.assertEquals(img, foundProduct.get().getImg());
+    }
+
+    @Test
+    public void testSaveTwice() {
+        String name = "Filip-Flops";
+        String desc = "hehehheheheha";
+        double price = 2730.99;
+        String img = "C://sven/filipiflopipi";
+        createProduct(name, desc, price, img);
+        try {
+            createProduct(name, desc, price, img);
+            Assertions.fail();
+        } catch (UserAlredyExistsException ex) {
+            Assertions.assertEquals("Product already exists!", ex.getMessage());
+        }
     }
 
 }

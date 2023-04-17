@@ -28,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product save(ProductDto product) {
         Validate.notNull(product);
-        Validate.notNull(product.getId(), "productDto.id must not be null");
 
         logger.info("Saving Product {}", product.getName());
 
