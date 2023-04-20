@@ -99,7 +99,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = new ArrayList<>(productDao.findAllByGueltigAbBeforeAndGueltigBisAfter(now, now));
 
         for (int i = 0; i < productList.size(); i++) {
-            if (!productList.get(i).getName().contains(searchString)) {
+            if (!productList.get(i).getName().toLowerCase().contains(searchString.toLowerCase())) {
                 productList.remove(i);
             }
         }

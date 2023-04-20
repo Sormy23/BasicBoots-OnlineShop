@@ -77,6 +77,19 @@ public class ProductDaoTest {
         productDao.save(pr);
 
         List<Product> product = productDao.findAllByGueltigAbBeforeAndGueltigBisAfter(new Date("06/01/2021"), new Date("06/01/2021"));
-        Assertions.assertFalse(product.isEmpty());
+        Assertions.assertEquals(1, product.stream().filter(p -> p.getId().equals(pr.getId())).count());
+    }
+
+    @Test
+    public void testFindByNameContainingIgnoreCase() {
+        String name = "Boots";
+        String desc = "die sind sooo toll";
+        double price = 17.99;
+        String img = "C://sven/blabla";
+
+        Product pr = saveProduct(name, desc, price, img);
+
+        List<Product> product = productDao.findByNameIsContainingIgnoreCase("boots");
+        Assertions.assertEquals(1, product.stream().filter(p -> p.getId().equals(pr.getId())).count());
     }
 }
