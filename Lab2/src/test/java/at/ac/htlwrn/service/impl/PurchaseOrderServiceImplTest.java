@@ -1,8 +1,6 @@
 package at.ac.htlwrn.service.impl;
 
-import at.ac.htlwrn.dto.ProductDto;
 import at.ac.htlwrn.dto.PurchaseOrderDto;
-import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.model.PurchaseOrder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,6 +28,17 @@ public class PurchaseOrderServiceImplTest {
         order.setDate(date);
 
         return purchaseOrderService.save(order);
+    }
+
+    @Test
+    public void testCanceled() {
+        String anrede = "Müller";
+        String name = "Meier";
+        String street = "Straße 1";
+        String zipCode = "2700";
+        String city = "Wiener Neustadt";
+        Date now = new Date();
+
     }
 
 }

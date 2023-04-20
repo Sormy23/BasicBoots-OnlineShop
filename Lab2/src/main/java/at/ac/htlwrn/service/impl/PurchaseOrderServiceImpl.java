@@ -75,10 +75,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
         if (order.isPresent()) {
-            if (order.get().getFinished() != null) {
+            if (order.get().getFinished() == null) {
                 logger.debug("Cancel order with id {}", order.get().getId());
                 Date date = new Date();
-                order.get().setFinished(date);
+                order.get().setCanceled(date);
             } else {
                 logger.warn("Order with id {} already finished", order.get().getId());
             }
@@ -94,7 +94,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
         if (order.isPresent()) {
-            if (order.get().getCanceled() != null) {
+            if (order.get().getCanceled() == null) {
                 logger.debug("Finish order with id {}", order.get().getId());
                 Date date = new Date();
                 order.get().setFinished(date);
