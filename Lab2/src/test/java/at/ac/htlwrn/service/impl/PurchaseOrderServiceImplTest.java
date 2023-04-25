@@ -48,11 +48,6 @@ public class PurchaseOrderServiceImplTest {
 
         PurchaseOrder order = createOrder(anrede, name, street, zipCode, city, now, price);
 
-        Optional<PurchaseOrder> foundProduct = purchaseOrderService.find(false, false).stream()
-                .filter(u -> u.getName().equals(name)).findFirst();
-
-        Assertions.assertTrue(foundProduct.isPresent());
-
         purchaseOrderService.cancel(order.getId());
 
         Optional<PurchaseOrder> canceledOrder = purchaseOrderService.find(true, false)
@@ -65,12 +60,42 @@ public class PurchaseOrderServiceImplTest {
 
     @Test
     public void testFinished() {
+        String anrede = "Frau";
+        String name = "Memet";
+        String street = "Straße 1";
+        String zipCode = "2700";
+        String city = "Wiener Neustadt";
+        Date now = new Date();
+        Double price = 17.99;
 
+        PurchaseOrder order = createOrder(anrede, name, street, zipCode, city, now, price);
+
+        purchaseOrderService.finish(order.getId());
+
+        Optional<PurchaseOrder> finishedOrder = purchaseOrderService.find(false, true)
+                .stream().filter(u -> u.getId().equals(order.getId())).findFirst();
+
+        Assertions.assertTrue(finishedOrder.isPresent());
+        Assertions.assertNull(finishedOrder.get().getCanceled());
+        Assertions.assertNotNull(finishedOrder.get().getFinished());
     }
 
     @Test
     public void testFind() {
+        String anrede = "Herr";
+        String name = "Sahin";
+        String street = "Straße 1";
+        String zipCode = "2700";
+        String city = "Wiener Neustadt";
+        Date now = new Date();
+        Double price = 17.99;
 
+        PurchaseOrder order = createOrder(anrede, name, street, zipCode, city, now, price);
+
+        Optional<PurchaseOrder> foundProduct = purchaseOrderService.find(false, false).stream()
+                .filter(u -> u.getId().equals(order.getId())).findFirst();
+
+        Assertions.assertTrue(foundProduct.isPresent());
     }
 
 }

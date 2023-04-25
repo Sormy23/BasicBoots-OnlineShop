@@ -58,10 +58,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             return (List<PurchaseOrder>) purchaseOrderDao.findAll();
         } else if (done) {
             logger.debug("Find all Orders where Finished is set");
-            return purchaseOrderDao.findAllByCanceledIsNotNull();
+            return purchaseOrderDao.findAllByFinishedIsNotNull();
         } else if (canceled) {
             logger.debug("Find all Orders where canceled is set");
-            return purchaseOrderDao.findAllByFinishedIsNotNull();
+            return purchaseOrderDao.findAllByCanceledIsNotNull();
         } else {
             logger.debug("Find all Orders wher canceled and finished is Null");
             return purchaseOrderDao.findAllByCanceledIsNullAndFinishedIsNull();
@@ -78,6 +78,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                 logger.debug("Cancel order with id {}", order.get().getId());
                 Date date = new Date();
                 order.get().setCanceled(date);
+                purchaseOrderDao.save(order.get());
             } else {
                 logger.warn("Order with id {} already finished", order.get().getId());
             }
@@ -96,6 +97,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
                 logger.debug("Finish order with id {}", order.get().getId());
                 Date date = new Date();
                 order.get().setFinished(date);
+                purchaseOrderDao.save(order.get());
             } else {
                 logger.warn("Order with id {} already canceled", order.get().getId());
             }
