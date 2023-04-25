@@ -98,4 +98,27 @@ public class PurchaseOrderServiceImplTest {
         Assertions.assertTrue(foundProduct.isPresent());
     }
 
+    @Test
+    public void testSave() {
+        String anrede = "Firma";
+        String name = "xyz";
+        String street = "Straße 1";
+        String zipCode = "1111";
+        String city = "stadt";
+        Date date = new Date(System.currentTimeMillis());
+        double total = 123.45;
+
+        PurchaseOrder savedOrder = createOrder(anrede, name, street, zipCode, city, date, total);
+
+        Optional<PurchaseOrder> foundOrder = purchaseOrderService.find(true, true)
+                .stream().filter(o -> o.getId().equals(savedOrder.getId())).findFirst();
+
+        Assertions.assertTrue(foundOrder.isPresent());
+        Assertions.assertEquals(anrede, foundOrder.get().getAnrede());
+        Assertions.assertEquals(name, foundOrder.get().getName());
+        Assertions.assertEquals(street, foundOrder.get().getStreet());
+        Assertions.assertEquals(zipCode, foundOrder.get().getZipCode());
+        Assertions.assertEquals(total, foundOrder.get().getPrice());
+    }
+
 }
