@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -18,7 +19,7 @@ public class PurchaseOrderDaoTest {
     @Autowired
     private PurchaseOrderDao purchaseOrderDao;
 
-    private PurchaseOrder saveOrder(String anrede, String vorname, String name, String street, String zipCode, String city, Timestamp date, double price) {
+    private PurchaseOrder saveOrder(String anrede, String vorname, String name, String street, String zipCode, String city, Date date, double price) {
         PurchaseOrder pr = new PurchaseOrder();
         pr.setAnrede(anrede);
         pr.setVorname(vorname);
@@ -39,7 +40,7 @@ public class PurchaseOrderDaoTest {
         String street = "Straße 1";
         String zipCode = "2700";
         String city = "Wiener Neustadt";
-        Timestamp date = new Timestamp(System.currentTimeMillis());
+        Date date = new Date();
         double price = 17.99;
 
         saveOrder(anrede, vorname, name, street, zipCode, city, date, price);
@@ -64,7 +65,7 @@ public class PurchaseOrderDaoTest {
         String street = "Straße 1";
         String zipCode = "2700";
         String city = "Wiener Neustadt";
-        Timestamp date = new Timestamp(System.currentTimeMillis());
+        Date date = new Date();
         double price = 17.99;
 
         saveOrder(anrede, vorname, name, street, zipCode, city, date, price);
@@ -86,7 +87,7 @@ public class PurchaseOrderDaoTest {
         String street = "Straße 1";
         String zipCode = "2700";
         String city = "Wiener Neustadt";
-        Timestamp date = new Timestamp(System.currentTimeMillis());
+        Date date = new Date();
         double price = 17.99;
 
         PurchaseOrder purchaseOrder = saveOrder(anrede, vorname, name, street, zipCode, city, date, price);

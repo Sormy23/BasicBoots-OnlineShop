@@ -26,10 +26,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Override
     public PurchaseOrder save(PurchaseOrderDto orderDto) {
-        Validate.notNull(orderDto);
-        Validate.notNull(orderDto.getId(), "orderDto must not be null");
+        Validate.notNull(orderDto, "orderDto must not be null");
 
-        logger.info("Saving Order new orderDto {}", orderDto.getId());
+        logger.info("Saving Order new orderDto {}", orderDto.getName());
 
         Optional<PurchaseOrder> order = purchaseOrderDao.findByName(orderDto.getName());
         if (order.isPresent()) {
@@ -39,6 +38,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         PurchaseOrder newOrder = new PurchaseOrder();
         newOrder.setAnrede(orderDto.getAnrede());
         newOrder.setCity(orderDto.getCity());
+        newOrder.setZipCode(orderDto.getZipCode());
         newOrder.setCanceled(orderDto.getCanceled());
         newOrder.setDate(orderDto.getDate());
         newOrder.setName(orderDto.getName());
@@ -52,14 +52,14 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public List<PurchaseOrder> find(boolean storniert, boolean erledigt) {
-        if(storniert && erledigt) {
+    public List<PurchaseOrder> find(boolean canceled, boolean done) {
+        if(canceled && done) {
             logger.debug("Find all Orders");
             return (List<PurchaseOrder>) purchaseOrderDao.findAll();
-        } else if (erledigt) {
+        } else if (done) {
             logger.debug("Find all Orders where Finished is set");
             return purchaseOrderDao.findAllByCanceledIsNotNull();
-        } else if (storniert) {
+        } else if (canceled) {
             logger.debug("Find all Orders where canceled is set");
             return purchaseOrderDao.findAllByFinishedIsNotNull();
         } else {
@@ -69,11 +69,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public void cancel(PurchaseOrderDto orderDto) {
-        Validate.notNull(orderDto);
-        Validate.notNull(orderDto.getId(), "orderDto.id must not be null!");
+    public void cancel(Long id) {
+        Validate.notNull(id, "orderDto.id must not be null!");
 
-        Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
+        Optional<PurchaseOrder> order = purchaseOrderDao.findById(id);
         if (order.isPresent()) {
             if (order.get().getFinished() == null) {
                 logger.debug("Cancel order with id {}", order.get().getId());
@@ -88,11 +87,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public void finish(PurchaseOrderDto orderDto) {
-        Validate.notNull(orderDto);
-        Validate.notNull(orderDto.getId(), "orderDto.id must not be null!");
+    public void finish(Long id) {
+        Validate.notNull(id, "orderDto.id must not be null!");
 
-        Optional<PurchaseOrder> order = purchaseOrderDao.findById(orderDto.getId());
+        Optional<PurchaseOrder> order = purchaseOrderDao.findById(id);
         if (order.isPresent()) {
             if (order.get().getCanceled() == null) {
                 logger.debug("Finish order with id {}", order.get().getId());

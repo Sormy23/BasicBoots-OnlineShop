@@ -25,13 +25,13 @@ public interface PurchaseOrderService {
 
     /**
      * cancels the given order
-     * @param orderDto specified order of type {@link PurchaseOrderDto}
+     * @param id of purchaseOrder
      */
-    void cancel(PurchaseOrderDto orderDto);
+    void cancel(Long id);
 
     /**
      * finishes an order
-     * @param orderDto specified order of type {@link PurchaseOrderDto}
+     * @param id of purchaseOrder
      */
-    void finish(PurchaseOrderDto orderDto);
+    void finish(Long id);
 }
