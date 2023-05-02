@@ -26,7 +26,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public ApiResponse<Product> saveOrder(@RequestBody ProductDto product){
+    public ApiResponse<Product> saveProduct(@RequestBody ProductDto product){
         return new ApiResponse<>(HttpStatus.OK.value(), "Product saved successfully.", productService.save(product));
     }
 
@@ -39,5 +39,22 @@ public class ProductController {
     public ApiResponse<Product> getById(@PathVariable Long id){
         return new ApiResponse<>(HttpStatus.OK.value(), "Product fetched successfully.", productService.findById(id));
     }
+
+    @GetMapping("/search/{search}")
+    public ApiResponse<List<Product>> searchProduct(@PathVariable String search){
+        return new ApiResponse<>(HttpStatus.OK.value(), "Product fetched successfully.", productService.search(search));
+    }
+
+    @PutMapping("/update/{id}")
+    public ApiResponse<Product> updateProducts(@RequestBody ProductDto product) {
+        return new ApiResponse<>(HttpStatus.OK.value(), "Product updated successfully", productService.update(product));
+    }
+
+    @PutMapping("/deactivate/{id}")
+    public ApiResponse<Void> deactivateProduct(@PathVariable Long id) {
+        productService.deactivate(id);
+        return new ApiResponse<>(HttpStatus.OK.value(), "Product deactivated successfully", null);
+    }
+
 
 }
