@@ -45,9 +45,9 @@ public class ProductController {
         return new ApiResponse<>(HttpStatus.OK.value(), "Product fetched successfully.", productService.search(search));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public ApiResponse<Product> updateProducts(@RequestBody ProductDto product) {
-        return new ApiResponse<>(HttpStatus.OK.value(), "Product updated successfully", productService.update(product));
+        return new ApiResponse<>(HttpStatus.OK.value(), "Product updated successfully.", productService.update(product));
     }
 
     @PutMapping("/deactivate/{id}")
