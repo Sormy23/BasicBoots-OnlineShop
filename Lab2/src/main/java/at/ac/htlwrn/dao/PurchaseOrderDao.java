@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface PurchaseOrderDao extends CrudRepository<PurchaseOrder, Long> {
-
     Optional<PurchaseOrder> findByName(String name);
 
     List<PurchaseOrder> findAllByZipCode(String zipcode);
@@ -21,7 +20,4 @@ public interface PurchaseOrderDao extends CrudRepository<PurchaseOrder, Long> {
     List<PurchaseOrder> findAllByCanceledIsNotNull();
 
     List<PurchaseOrder> findAllByCanceledIsNullAndFinishedIsNull();
-
-
-
 }

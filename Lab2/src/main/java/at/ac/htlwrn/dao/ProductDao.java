@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface ProductDao extends CrudRepository<Product, Long> {
-
     List<Product> findByNameIsContainingIgnoreCase(String name);
 
     List<Product> findAllByGueltigAbBeforeAndGueltigBisAfter(Date now1, Date now2);
