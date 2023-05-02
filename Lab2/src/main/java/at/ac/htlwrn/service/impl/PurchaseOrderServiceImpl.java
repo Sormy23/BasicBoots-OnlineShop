@@ -3,6 +3,7 @@ package at.ac.htlwrn.service.impl;
 import at.ac.htlwrn.dao.PurchaseOrderDao;
 import at.ac.htlwrn.dto.PurchaseOrderDto;
 import at.ac.htlwrn.exception.OrderAlreadyExistsException;
+import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.model.PurchaseOrder;
 import at.ac.htlwrn.service.PurchaseOrderService;
 import org.springframework.stereotype.Service;
@@ -70,7 +71,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Override
     public void cancel(Long id) {
-        Validate.notNull(id, "orderDto.id must not be null!");
+        Validate.notNull(id, "id must not be null!");
 
         Optional<PurchaseOrder> order = purchaseOrderDao.findById(id);
         if (order.isPresent()) {
@@ -89,7 +90,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Override
     public void finish(Long id) {
-        Validate.notNull(id, "orderDto.id must not be null!");
+        Validate.notNull(id, "id must not be null!");
 
         Optional<PurchaseOrder> order = purchaseOrderDao.findById(id);
         if (order.isPresent()) {
@@ -104,5 +105,13 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         } else {
             logger.error("Order not found! Nothing Finished");
         }
+    }
+
+    @Override
+    public PurchaseOrder findById(Long id) {
+        Validate.notNull(id, "id must not be null");
+        logger.debug("Find order by id {}", id);
+        Optional<PurchaseOrder> order = purchaseOrderDao.findById(id);
+        return order.orElse(null);
     }
 }

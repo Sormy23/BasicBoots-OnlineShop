@@ -34,4 +34,11 @@ public interface PurchaseOrderService {
      * @param id of purchaseOrder
      */
     void finish(Long id);
+
+    /**
+     * returns an order by its id
+     * @param id of order
+     * @return {@link PurchaseOrder}
+     */
+    PurchaseOrder findById(Long id);
 }
