@@ -116,5 +116,4 @@ public class ProductServiceImplTest {
     /*
     Sowohl findByName als auch findById wurden indirekt bei den anderen Test mitgetestet
      */
-
 }
