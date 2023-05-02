@@ -40,13 +40,13 @@ public class PurchaseOrderController {
     @PutMapping("/cancel/{id}")
     public ApiResponse<Void> cancel(@PathVariable Long id) {
         purchaseOrderService.cancel(id);
-        return new ApiResponse<>(HttpStatus.OK.value(), "User updated successfully.", null);
+        return new ApiResponse<>(HttpStatus.OK.value(), "Order canceled successfully.", null);
     }
 
     @PutMapping("/finish/{id}")
     public ApiResponse<Void> finish(@PathVariable Long id) {
         purchaseOrderService.finish(id);
-        return new ApiResponse<>(HttpStatus.OK.value(), "User updated successfully.", null);
+        return new ApiResponse<>(HttpStatus.OK.value(), "Order finished successfully.", null);
     }
 
 }
