@@ -94,6 +94,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		Validate.notNull(userDto);
 		Validate.notNull(userDto.getUsername(), "username must not be null");
 
+
 		logger.info("Saving user new user {}",userDto.getUsername());
 
 		Optional<User> user = userDao.findByUsername(userDto.getUsername());
