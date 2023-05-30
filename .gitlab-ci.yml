@@ -14,7 +14,7 @@ backend_test:
       - $SPRING_FOLDER/target/
   script:
     - cd $SPRING_FOLDER
-    - mvn --batch-mode -T 1C -Dmaven.test.failure.ignore=true test
+    - mvn --batch-mode -T 1C
   artifacts:
     reports:
       junit: $SPRING_FOLDER/target/surefire-reports/TEST-*.xml
