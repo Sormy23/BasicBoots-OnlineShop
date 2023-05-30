@@ -1,0 +1,26 @@
+stages:
+  - backend_test
+
+backend_test:
+  image: maven:3.8.3-openjdk-17
+  variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+    SPRING_FOLDER: "$CI_PROJECT_DIR/Lab2"
+  stage: backend_test
+  cache:
+    key: "spring-boot-backend"
+    paths:
+      - $CI_PROJECT_DIR/.m2/repository
+      - $SPRING_FOLDER/target/
+  script:
+    - cd $SPRING_FOLDER
+    - mvn --batch-mode -T 1C -Dmaven.test.failure.ignore=true test
+  artifacts:
+    reports:
+      junit: $SPRING_FOLDER/target/surefire-reports/TEST-*.xml
+    paths:
+      - $SPRING_FOLDER/target/surefire-reports/*.xml
+  only:
+     - main
+
+
