@@ -14,7 +14,7 @@ backend_test:
       - $SPRING_FOLDER/target/
   script:
     - cd $SPRING_FOLDER
-    - mvn --batch-mode -T 1C
+    - mvn --batch-mode -T 1C test
   artifacts:
     reports:
       junit: $SPRING_FOLDER/target/surefire-reports/TEST-*.xml
