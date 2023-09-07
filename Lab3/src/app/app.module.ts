@@ -8,6 +8,9 @@ import { ShopComponent } from './shop/shop.component';
 import { BasketComponent } from './basket/basket.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {ProductService} from "./core/product.service";
+import {HttpClientModule} from "@angular/common/http";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,9 +23,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgOptimizedImage
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

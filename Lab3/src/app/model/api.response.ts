@@ -1,5 +1,4 @@
-export class ApiResponse<T> {
-
+export interface ApiResponse<T> {
   status: number;
   message: string;
   result: T;

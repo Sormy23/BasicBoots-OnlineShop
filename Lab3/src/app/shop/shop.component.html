@@ -1,52 +1,16 @@
 <!--Hauptteil-->
 
 <div class="container text-center " id="product">
-  <div class="row row-cols-1 row-cols-sm-3 products">
+  <div class="row row-cols-1 row-cols-sm-3 products" *ngFor="let product of products">
     <div class="col">
-      <img id="1" src="assets/images/shop_img1.png" width="200" height="200" draggable="true" alt="shoes">
+      <img src="{{product.imageUrl}}" width="200" height="200" draggable="false" alt="shoes">
     </div>
     <div class="col">
-      <h3>Laufschuhe</h3>
-      <p>Schuhe für jede Lebenssituation,
-        egal ob Schmall, Regen oder Sonnenschein diese Schuhe
-        lassen sie niemals im stich!</p>
+      <h3>{{product.name}}</h3>
+      <p>{{product.description}}</p>
     </div>
     <div class="col">
-      <div class="price" >320,20€</div>
-      <button type="button" class="btn btn-secondary" >Zum Warenkorb hinzufügen</button>
-    </div>
-  </div>
-
-  <div class="row row-cols-1 row-cols-sm-3 products">
-    <div class="col">
-      <img id="2" src="assets/images/shop_img2.png" width="200" height="200" draggable="true" alt="shoes">
-    </div>
-    <div class="col">
-      <h3>Winterstiefel</h3>
-      <p>Besonders gut für die kalten Jahreszeiten
-        bis in den tiefsten Winter! Auf diese Schuhe
-        ist immer verlass!</p>
-    </div>
-    <div class="col">
-      <div class="price" >60,99€</div>
-      <button type="button" class="btn btn-secondary " >Zum Warenkorb hinzufügen</button>
-    </div>
-  </div>
-
-
-  <div class="row row-cols-1 row-cols-sm-3 products">
-    <div class="col">
-      <img id="3" src="assets/images/shop_img3.png" width="200" height="200" alt="shoes" draggable="true">
-    </div>
-    <div class="col">
-      <h3>Moomboots</h3>
-      <p>Schuhe von der bekannten Marke Moomboots
-        am besten geeignet für das schnelle an- und ausziehen
-        damit sie auch im Winter bei Müll entsorgen keine
-        kalten Füße bekommen</p>
-    </div>
-    <div class="col">
-      <div class="price" >112,99€</div>
+      <div class="price" >{{product.price}}€</div>
       <button type="button" class="btn btn-secondary" >Zum Warenkorb hinzufügen</button>
     </div>
   </div>

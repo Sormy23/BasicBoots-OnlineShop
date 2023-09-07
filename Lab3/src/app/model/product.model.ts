@@ -1,5 +1,6 @@
-export class Product {
+export interface Product {
   id: number;
+  purchases: number[];
   name: string;
   price: number;
   description: string;

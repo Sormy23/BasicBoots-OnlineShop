@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {ProductService} from "../core/product.service";
+import {Product} from "../model/product.model";
+import {ApiResponse} from "../model/api.response";
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent {
+export class ShopComponent implements OnInit{
 
+  products?: Product[] = [];
+
+  constructor(private router: Router, private productService: ProductService) { }
+
+  ngOnInit() {
+    this.productService.getProducts()
+      .subscribe( data => {
+        this.products = data.result;
+      });
+
+    console.log(this.products);
+  }
 }
