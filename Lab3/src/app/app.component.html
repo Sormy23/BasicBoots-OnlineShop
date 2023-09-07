@@ -1,23 +1,23 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./index.html"><img alt="Boot" id="logo" src="assets/images/white_boot.png" width="30" height="30">Basic Boots</a>
+    <a class="navbar-brand" routerLink=""><img alt="Boot" id="logo" src="assets/images/white_boot.png" width="30" height="30">reBOOT</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          <a class="nav-link" [class.active]="getURL() == '/'" aria-current="page" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="">Shop</a>
+          <a class="nav-link " [class.active]="getURL().startsWith('/shop')" routerLink="/shop">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Impressum</a>
+          <a class="nav-link" [class.active]="getURL().startsWith('/imprint')" routerLink="/imprint">Impressum</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href=""><span id="shopping-cart-logo" class="material-symbols-outlined d-inline-block align-text-top">shopping_cart</span><span id="count_badge" class="my_badge badge-pill badge-light"></span></a>
+          <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><span id="shopping-cart-logo" class="material-symbols-outlined d-inline-block align-text-top">shopping_cart</span><span id="count_badge" class="my_badge badge-pill badge-light"></span></a>
         </li>
       </ul>
       <form class="d-flex">
@@ -28,48 +28,7 @@
   </div>
 </nav>
 
-
-<!-- Mainpage -->
-<div class="container">
-  <div class="row">
-
-    <h1 id="heading">Willkommen zu Basic Boots</h1>
-
-
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="4000">
-          <img src="./assets/images/img1.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="./assets/images/img2.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img src="./assets/images/img3.png" class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <div id="to_shop">
-      <h2>Hier gehts zum Webshop:</h2>
-      <a href="shop.html"> <button type="button" id="shop_btn" class="btn btn-primary btn-lg">Shop</button></a>
-    </div>
-  </div>
-</div>
-
+<router-outlet></router-outlet>
 
 <div class="d-flex flex-column h-100" id="footer">
   <!-- FOOTER -->
@@ -77,17 +36,17 @@
     <div class="container py-4">
       <div class="row gy-4 gx-5">
         <div class="col-lg-6 col-md-6">
-          <h5 class="h1 text-white">Basic Boots</h5>
+          <h5 class="h1 text-white">reBOOT</h5>
           <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
           <p class="small mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">BasicBoots.com</a></p>
         </div>
         <div class="col-lg-2 col-md-6">
           <h5 class="text-white mb-3">Quick links</h5>
           <ul class="list-unstyled">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./shop.html">Shop</a></li>
-            <li><a href="./imprint.html">Impressum</a></li>
-            <li><a href="./warenkorb.html">Warenkorb</a></li>
+            <li><a routerLink="">Home</a></li>
+            <li><a routerLink="/shop">Shop</a></li>
+            <li><a routerLink="/imprint">Impressum</a></li>
+            <li><a routerLink="/basket">Warenkorb</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -95,7 +54,7 @@
           <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
           <form action="#">
             <div class="input-group mb-3">
-              <input class="form-control bg-white" type="email" placeholder="E-Mail" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input id="email-field" class="form-control bg-white" type="email" placeholder="E-Mail" aria-label="Recipient's username" aria-describedby="button-addon2">
               <button class="btn btn-primary" id="button-addon2" type="button"><span class="material-symbols-outlined">send</span></button>
             </div>
           </form>
