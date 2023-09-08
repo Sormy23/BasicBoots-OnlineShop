@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
-import {CartService} from "./cart.service";
+import {CartService} from "./core/cart.service";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent {
     return this.cartService.cart.length == 0;
   }
 
-  constructor(private router: Router, private cartService: CartService) {
+  constructor(private router: Router, protected cartService: CartService) {
   }
 
   protected readonly console = console;

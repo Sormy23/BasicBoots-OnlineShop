@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Product} from "./model/product.model";
+import {Product} from "../model/product.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cart: any[] = [];
+  cart: { PRODUCT: Product, AMOUNT: number }[] = [];
 
   constructor() { }
 
@@ -21,5 +21,13 @@ export class CartService {
         this.cart[index].AMOUNT++;
       }
     }
+  }
+
+  getBasketAmount(): number {
+    let sum: number = 0;
+    for (let i of this.cart) {
+      sum += i.AMOUNT;
+    }
+    return sum;
   }
 }
