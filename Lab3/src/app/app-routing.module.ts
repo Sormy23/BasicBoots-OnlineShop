@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'imprint', component: NotFoundComponent },
-  { path: 'basket', component: NotFoundComponent },
+  { path: 'basket', component: BasketComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

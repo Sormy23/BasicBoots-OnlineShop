@@ -30,4 +30,15 @@ export class CartService {
     }
     return sum;
   }
+
+  removeFromCart(product: Product) {
+    let index = this.cart.findIndex(item => item.PRODUCT.id == product.id);
+    if (index != -1) {
+      if (this.cart[index].AMOUNT == 1) {
+        this.cart.splice(index, 1);
+      } else {
+        this.cart[index].AMOUNT--;
+      }
+    }
+  }
 }

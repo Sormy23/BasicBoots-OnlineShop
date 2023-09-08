@@ -1,0 +1,22 @@
+<!--Hauptteil-->
+
+<div class="container text-center " id="basket">
+  <div class="row row-cols-1 row-cols-sm-3 products" *ngFor="let product of cartService.cart">
+    <div class="col">
+      <img src="{{product.PRODUCT.img}}" width="200" height="200" draggable="true" alt="shoes">
+    </div>
+    <div class="col align-self-center">
+      <h3>{{product.PRODUCT.name}}</h3>
+      <div>
+        <button class="btn btn-link" type="button" (click)="cartService.addToCart(product.PRODUCT)"><span class="badge text-bg-secondary">+</span></button>
+        <span class="badge text-bg-secondary">Amount: {{product.AMOUNT}}</span>
+        <button class="btn btn-link" type="button" (click)="cartService.removeFromCart(product.PRODUCT)"><span class="badge text-bg-secondary">-</span></button>
+      </div>
+    </div>
+    <div class="col align-self-center">
+      <div>
+        <span class="price">{{product.AMOUNT * product.PRODUCT.price}}€</span>
+      </div>
+    </div>
+  </div>
+</div>
