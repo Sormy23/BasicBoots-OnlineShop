@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "../core/cart.service";
 import {Router} from "@angular/router";
+import {Product} from "../model/product.model";
 
 @Component({
   selector: 'app-basket',
@@ -15,6 +16,21 @@ export class BasketComponent implements OnInit{
     if (this.cartService.cart.length == 0) {
       this.router.navigateByUrl("/shop");
     }
+  }
+
+  removeFromCart(product: Product) {
+    this.cartService.removeFromCart(product);
+    if (this.cartService.cart.length == 0) {
+      this.router.navigateByUrl("/shop");
+    }
+  }
+
+  calculateEndPrice(): number {
+    let sum: number = 0;
+    for (let product of this.cartService.cart) {
+      sum += product.AMOUNT * product.PRODUCT.price;
+    }
+    return sum;
   }
 
 }

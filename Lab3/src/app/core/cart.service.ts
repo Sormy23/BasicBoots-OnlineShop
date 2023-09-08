@@ -13,12 +13,15 @@ export class CartService {
   addToCart(product: Product) {
     if (this.cart.length == 0) {
       this.cart.push({PRODUCT: product, AMOUNT: 1});
+      console.log("Added product to the basket: " + product.name);
     } else {
       let index = this.cart.findIndex(item => item.PRODUCT.id == product.id);
       if (index == -1) {
         this.cart.push({PRODUCT: product, AMOUNT: 1});
+        console.log("Added product to the basket: " + product.name);
       } else {
         this.cart[index].AMOUNT++;
+        console.log("Increased amount in basket of the product: " + product.name);
       }
     }
   }
@@ -28,6 +31,7 @@ export class CartService {
     for (let i of this.cart) {
       sum += i.AMOUNT;
     }
+    console.log("Calculated basket amount: " + sum);
     return sum;
   }
 
@@ -35,9 +39,11 @@ export class CartService {
     let index = this.cart.findIndex(item => item.PRODUCT.id == product.id);
     if (index != -1) {
       if (this.cart[index].AMOUNT == 1) {
+        console.log("Remove product from cart: " + product.name);
         this.cart.splice(index, 1);
       } else {
         this.cart[index].AMOUNT--;
+        console.log("Decrease number of product: " + product.name);
       }
     }
   }
