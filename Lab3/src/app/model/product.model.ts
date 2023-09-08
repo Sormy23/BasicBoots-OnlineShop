@@ -1,10 +1,10 @@
 export interface Product {
   id: number;
-  purchases: number[];
+  purchases: any;
   name: string;
+  desc: string;
   price: number;
-  description: string;
-  imageUrl: string;
-  validFrom: Date;
-  validTo: Date;
+  img: string;
+  gueltigAb: Date;
+  gueltigBis: Date;
 }

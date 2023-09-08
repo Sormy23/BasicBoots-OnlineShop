@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ProductService} from "../core/product.service";
 import {Product} from "../model/product.model";
-import {ApiResponse} from "../model/api.response";
 
 @Component({
   selector: 'app-shop',
@@ -11,7 +10,7 @@ import {ApiResponse} from "../model/api.response";
 })
 export class ShopComponent implements OnInit{
 
-  products?: Product[] = [];
+  products: Product[] = [];
 
   constructor(private router: Router, private productService: ProductService) { }
 
@@ -20,7 +19,5 @@ export class ShopComponent implements OnInit{
       .subscribe( data => {
         this.products = data.result;
       });
-
-    console.log(this.products);
   }
 }
