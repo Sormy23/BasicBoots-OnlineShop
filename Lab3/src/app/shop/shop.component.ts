@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ProductService} from "../core/product.service";
 import {Product} from "../model/product.model";
+import {CartService} from "../cart.service";
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,7 @@ export class ShopComponent implements OnInit{
 
   products: Product[] = [];
 
-  constructor(private router: Router, private productService: ProductService) { }
+  constructor(private router: Router, private productService: ProductService, protected cartService: CartService) { }
 
   ngOnInit() {
     this.productService.getProducts()

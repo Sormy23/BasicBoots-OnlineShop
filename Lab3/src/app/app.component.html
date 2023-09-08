@@ -16,7 +16,7 @@
         <li class="nav-item">
           <a class="nav-link" [class.active]="getURL().startsWith('/imprint')" routerLink="/imprint">Impressum</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item" [class.visually-hidden]="isBasketEmpty()">
           <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><span id="shopping-cart-logo" class="material-symbols-outlined d-inline-block align-text-top">shopping_cart</span><span id="count_badge" class="my_badge badge-pill badge-light"></span></a>
         </li>
       </ul>
