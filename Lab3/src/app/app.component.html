@@ -17,7 +17,7 @@
           <a class="nav-link" [class.active]="getURL().startsWith('/imprint')" routerLink="/imprint">Impressum</a>
         </li>
         <li class="nav-item" [class.visually-hidden]="isBasketEmpty()">
-          <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><span id="shopping-cart-logo" class="material-symbols-outlined d-inline-block align-text-top">shopping_cart</span><span id="count_badge" class="my_badge badge-pill badge-light">{{cartService.getBasketAmount()}}</span></a>
+          <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><i class="bi bi-cart3"></i><span id="count_badge" class="my_badge badge-pill badge-light">{{cartService.getBasketAmount()}}</span></a>
         </li>
       </ul>
       <form class="d-flex">
@@ -55,7 +55,7 @@
           <form action="#">
             <div class="input-group mb-3">
               <input id="email-field" class="form-control bg-white" type="email" placeholder="E-Mail" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-primary" id="button-addon2" type="button"><span class="material-symbols-outlined">send</span></button>
+              <button class="btn btn-primary" id="button-addon2" type="button"><i class="bi bi-send-check"></i></button>
             </div>
           </form>
         </div>

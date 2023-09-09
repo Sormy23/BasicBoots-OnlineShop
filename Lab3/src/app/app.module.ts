@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {ProductService} from "./core/product.service";
 import {HttpClientModule} from "@angular/common/http";
 import {NgOptimizedImage} from "@angular/common";
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {NgOptimizedImage} from "@angular/common";
     BasketComponent,
     ImprintComponent,
     NotFoundComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

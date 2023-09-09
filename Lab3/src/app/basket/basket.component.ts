@@ -14,14 +14,14 @@ export class BasketComponent implements OnInit{
 
   ngOnInit() {
     if (this.cartService.cart.length == 0) {
-      this.router.navigateByUrl("/shop");
+      this.router.navigateByUrl("/shop"); // Auto redirect if cart page is empty
     }
   }
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product);
     if (this.cartService.cart.length == 0) {
-      this.router.navigateByUrl("/shop");
+      this.router.navigateByUrl("/shop"); // Auto redirect when last item is removed and cart is empty
     }
   }
 
