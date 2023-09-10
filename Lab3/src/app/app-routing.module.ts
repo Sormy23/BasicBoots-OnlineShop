@@ -7,12 +7,14 @@ import { ShopComponent } from './shop/shop.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { BasketComponent } from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'imprint', component: NotFoundComponent },
   { path: 'basket', component: BasketComponent },
+  { path: 'order', component: OrderComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
