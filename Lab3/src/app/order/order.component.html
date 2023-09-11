@@ -1,13 +1,79 @@
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="anrede">User Name:</label>
-    <input type="text" formControlName="anrede" placeholder="Herr/Frau/Divers" name="anrede" id="anrede"
-           [class.is-invalid]="!(addForm.get('anrede')?.valid) && addForm.get('anrede')?.touched" class="form-control">
-    <div class="invalid-feedback">
-      Please provide a anrede name.
-    </div>
+<div class="container order-form">
+  <div class="row justify-content-xs-center">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="anrede">Anrede</label>
+        <div>
+          <select formControlName="anrede" id="anrede" name="anrede" class="custom-select">
+            <option selected="selected" value="">--</option>
+            <option value="herr">Herr</option>
+            <option value="frau">Frau</option>
+            <option value="hubschrauber">Sonstiges</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="vorname">Vorname</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-address-card"></i>
+            </div>
+          </div>
+          <input formControlName="vorname" id="vorname" name="vorname" type="text" class="form-control"
+                 [class.is-invalid]="!(addForm.get('vorname')?.valid) && addForm.get('vorname')?.touched">
+          <div class="invalid-feedback">
+            Bitte geben sie einen gültigen Vorname ein.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Nachname</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-address-card"></i>
+            </div>
+          </div>
+          <input formControlName="name" id="name" name="name" type="text" class="form-control"
+                 [class.is-invalid]="!(addForm.get('name')?.valid) && addForm.get('name')?.touched">
+          <div class="invalid-feedback">
+            Bitte geben sie einen gültigen Nachnamen ein.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="street">Straße</label>
+        <input formControlName="street" id="street" name="street" type="text" class="form-control"
+               [class.is-invalid]="!(addForm.get('street')?.valid) && addForm.get('street')?.touched">
+        <div class="invalid-feedback">
+          Bitte geben sie eine gültige Straße ein.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="zipCode">Postleitzahl</label>
+        <input formControlName="zipCode" id="zipCode" name="zipCode" type="text" class="form-control"
+               [class.is-invalid]="!(addForm.get('zipCode')?.valid) && addForm.get('zipCode')?.touched">
+        <div class="invalid-feedback">
+          Bitte geben sie eine gültige Postleitzahl ein.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">Stadt</label>
+        <input formControlName="city" id="city" name="city" type="text" class="form-control"
+               [class.is-invalid]="!(addForm.get('city')?.valid) && addForm.get('city')?.touched">
+        <div class="invalid-feedback">
+          Bitte geben sie eine gültige Straße ein.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="notes">Anmerkungen</label>
+        <textarea id="notes" name="notes" cols="40" rows="5" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <button name="submit" type="submit" class="btn btn-primary" [disabled]="!addForm.valid">Jetzt Bestellen</button>
+        <button name="cancel" type="button" id="cancel" (click)="onCancel()" class="btn btn-danger">Abbruch</button>
+      </div>
+    </form>
   </div>
-
-
-  <button class="btn btn-success">Add</button>
-</form>
+</div>

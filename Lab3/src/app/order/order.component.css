@@ -1,0 +1,14 @@
+.product-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.order-form {
+  margin-top: 80px;
+  background: white !important;
+}
+
+#cancel {
+  margin-left: 20px;
+}

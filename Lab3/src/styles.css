@@ -1,6 +1,7 @@
 * {
-  font-family: 'Silkscreen', cursive;
+  font-family: 'Orbitron', sans-serif;
 }
+
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -24,17 +25,6 @@ a {
 a:hover, a:focus {
   text-decoration: none;
 }
-
-.form-control {
-  background: #212529;
-  border-color: #545454;
-}
-
-.form-control:focus {
-  background: #212529;
-}
-
-
 
 .price {
   margin-bottom: 2vw;

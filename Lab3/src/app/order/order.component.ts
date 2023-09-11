@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ProductService} from "../core/product.service";
+import {CartService} from "../core/cart.service";
 
 @Component({
   selector: 'app-order',
@@ -10,7 +11,7 @@ import {ProductService} from "../core/product.service";
 })
 export class OrderComponent implements OnInit{
 
-    constructor(private formBuilder: FormBuilder,private router: Router, private productService: ProductService) { }
+    constructor(private formBuilder: FormBuilder,private router: Router, private productService: ProductService, private cartService: CartService) { }
 
     addForm: FormGroup = new FormGroup({});
 
@@ -26,6 +27,15 @@ export class OrderComponent implements OnInit{
     }
 
     onSubmit() {
+      console.log("Create order: " + this.addForm.value);
 
+      //Create order in Backend
+
+      this.cartService.cart = [];
+      this.router.navigateByUrl("");
+    }
+
+    onCancel() {
+        this.router.navigateByUrl("/basket");
     }
 }
