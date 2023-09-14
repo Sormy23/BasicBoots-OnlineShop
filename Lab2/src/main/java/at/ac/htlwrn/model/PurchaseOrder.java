@@ -2,6 +2,8 @@ package at.ac.htlwrn.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "productOrder")
@@ -11,9 +13,7 @@ public class PurchaseOrder {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    //end
-
-    @Column(nullable = false)
+    @Column
     private String anrede;
 
     @Column
@@ -42,6 +42,10 @@ public class PurchaseOrder {
 
     @Column
     private Date canceled;
+
+    //m-n
+    @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    List<OrderedProducts> productList;
 
     public Long getId() {
         return id;
@@ -126,4 +130,14 @@ public class PurchaseOrder {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+
+    public List<OrderedProducts> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<OrderedProducts> productList) {
+        this.productList = productList;
+    }
+
 }

@@ -8,8 +8,6 @@ import java.util.Set;
 public class ProductDto {
     private Long id;
 
-    Set<OrderedProducts> purchases;
-
     private String name;
 
     private String desc;
@@ -21,6 +19,9 @@ public class ProductDto {
     private Date gueltigAb;
 
     private Date gueltigBis;
+
+    //for web client only, in database this is in OrderedProduct
+    private Integer quantity;
 
     //Get methods
 
@@ -80,5 +81,13 @@ public class ProductDto {
 
     public void setGueltigBis(Date gueltigBis) {
         this.gueltigBis = gueltigBis;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

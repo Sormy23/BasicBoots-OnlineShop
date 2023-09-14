@@ -14,9 +14,6 @@ public class Product {
 
     //n:m-Beziehung
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    private Set<OrderedProducts> purchases;
-
     //end
 
     @Column(nullable = false)
@@ -57,16 +54,6 @@ public class Product {
 
     public String getImg() {
         return img;
-    }
-
-    //set methods
-
-    public Set<OrderedProducts> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(Set<OrderedProducts> purchases) {
-        this.purchases = purchases;
     }
 
     public Date getGueltigAb() {

@@ -1,7 +1,11 @@
 package at.ac.htlwrn.dto;
 
+import at.ac.htlwrn.model.OrderedProducts;
+
 import javax.persistence.Column;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class PurchaseOrderDto {
     private Long id;
@@ -25,6 +29,8 @@ public class PurchaseOrderDto {
     private Date finished;
 
     private Date canceled;
+
+    private List<ProductDto> productList;
 
     public Long getId() {
         return id;
@@ -108,5 +114,13 @@ public class PurchaseOrderDto {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public List<ProductDto> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<ProductDto> productList) {
+        this.productList = productList;
     }
 }
