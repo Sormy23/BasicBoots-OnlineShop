@@ -31,7 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     NgOptimizedImage,
     ReactiveFormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, BasketComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

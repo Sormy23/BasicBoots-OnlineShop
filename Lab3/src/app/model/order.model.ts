@@ -1,6 +1,6 @@
 import {Product} from "./product.model";
 
-export interface Order {
+export class Order {
   anrede: string;
   vorname: string;
   name: string;
@@ -11,5 +11,5 @@ export interface Order {
   price: number;
   finished: Date;
   canceled: Date;
-  productList: any;
+  productList: Product[];
 }
