@@ -7,4 +7,5 @@ export interface Product {
   img: string;
   gueltigAb: Date;
   gueltigBis: Date;
+  quantity: number;
 }
