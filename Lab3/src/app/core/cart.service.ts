@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Product} from "../model/product.model";
 
 @Injectable({
@@ -9,6 +9,8 @@ export class CartService {
   cart: { PRODUCT: Product, AMOUNT: number }[] = [];
 
   constructor() { }
+
+  //TODO: Implement Session Storage
 
   addToCart(product: Product) {
     if (this.cart.length == 0) {
@@ -47,4 +49,6 @@ export class CartService {
       }
     }
   }
+
+
 }

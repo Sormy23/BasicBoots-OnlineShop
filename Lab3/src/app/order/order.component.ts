@@ -29,7 +29,9 @@ export class OrderComponent implements OnInit{
     onSubmit() {
       console.log("Create order: " + this.addForm.value);
 
-      //Create order in Backend
+      //TODO: send order to backend
+
+
 
       this.cartService.cart = [];
       this.router.navigateByUrl("");
