@@ -62,6 +62,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         return purchaseOrderDao.save(newOrder);
     }
 
+    //TODO Fehler hier :-(
+
     private void copyProductList(PurchaseOrderDto orderDto, PurchaseOrder order) {
         if (orderDto.getProductList() != null) {
             order.setProductList(new ArrayList<>());
