@@ -28,7 +28,7 @@ export class BasketComponent implements OnInit{
   calculateEndPrice(): number {
     let sum: number = 0;
     for (let product of this.cartService.cart) {
-      sum += product.AMOUNT * product.PRODUCT.price;
+      sum += product.quantity * product.price;
     }
     return sum;
   }

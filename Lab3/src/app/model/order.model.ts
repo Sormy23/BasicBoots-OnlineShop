@@ -1,7 +1,6 @@
 import {Product} from "./product.model";
 
 export interface Order {
-  id: number;
   anrede: string;
   vorname: string;
   name: string;
