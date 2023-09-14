@@ -1,8 +1,12 @@
 package at.ac.htlwrn.service.impl;
 
+import at.ac.htlwrn.dao.ProductDao;
 import at.ac.htlwrn.dao.PurchaseOrderDao;
+import at.ac.htlwrn.dto.ProductDto;
 import at.ac.htlwrn.dto.PurchaseOrderDto;
 import at.ac.htlwrn.exception.OrderAlreadyExistsException;
+import at.ac.htlwrn.exception.ProductDoesNotExistException;
+import at.ac.htlwrn.model.OrderedProducts;
 import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.model.PurchaseOrder;
 import at.ac.htlwrn.service.PurchaseOrderService;
@@ -12,6 +16,7 @@ import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -24,6 +29,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Autowired
     private PurchaseOrderDao purchaseOrderDao;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Override
     public PurchaseOrder save(PurchaseOrderDto orderDto) {
@@ -49,7 +57,31 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         newOrder.setVorname(orderDto.getVorname());
         newOrder.setName(orderDto.getName());
 
+        copyProductList(orderDto, newOrder);
+
         return purchaseOrderDao.save(newOrder);
+    }
+
+    private void copyProductList(PurchaseOrderDto orderDto, PurchaseOrder order) {
+        if (orderDto.getProductList() != null) {
+            order.setProductList(new ArrayList<>());
+            for (ProductDto productDto : orderDto.getProductList()) {
+                Assert.notNull(productDto, "productDto must not be null");
+                Assert.notNull(productDto.getId(), "productDto.Id must not be null");
+                addProductToList(productDto, order);
+            }
+        }
+    }
+
+    private void addProductToList(ProductDto productDto, PurchaseOrder order) {
+        Product product = productDao.findById(productDto.getId())
+                .orElseThrow(ProductDoesNotExistException::new);
+        OrderedProducts orderedProduct = new OrderedProducts();
+        orderedProduct.setPurchaseOrder(order);
+        orderedProduct.setProduct(product);
+        orderedProduct.setQuantity(productDto.getQuantity());
+
+        order.getProductList().add(orderedProduct);
     }
 
     @Override

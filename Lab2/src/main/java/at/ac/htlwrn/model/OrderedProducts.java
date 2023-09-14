@@ -11,6 +11,7 @@ public class OrderedProducts {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     Product product;
@@ -22,4 +23,28 @@ public class OrderedProducts {
     @Column(nullable = false)
     int quantity;
 
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
