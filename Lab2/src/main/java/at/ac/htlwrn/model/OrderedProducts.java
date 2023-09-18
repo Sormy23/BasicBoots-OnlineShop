@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "orderedProducts")
 public class OrderedProducts {
 
     @Id
@@ -12,16 +11,15 @@ public class OrderedProducts {
     Long id;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "product_id")
-    Product product;
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "purchasOrder_id")
-    PurchaseOrder purchaseOrder;
+    private PurchaseOrder purchaseOrder;
 
-    @Column(nullable = false)
-    int quantity;
+    private int quantity;
 
 
     public Product getProduct() {

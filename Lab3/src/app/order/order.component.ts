@@ -43,13 +43,15 @@ export class OrderComponent implements OnInit{
       order.productList = this.cartService.cart;
       order.date = new Date();
 
+      console.log("Order: " + JSON.stringify(order));
+
       this.orderService.saveOrder(order)
         .subscribe(data => {
           console.log("Saved order: " + data);
           console.log("Product list that was saved to backend: " + JSON.stringify(order.productList));
         },
           error => {
-            console.log("Error saving order: " + error);
+            console.log("Error saving order: " + JSON.stringify(error));
           });
 
       this.cartService.cart = [];

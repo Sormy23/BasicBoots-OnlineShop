@@ -10,6 +10,7 @@ import at.ac.htlwrn.model.OrderedProducts;
 import at.ac.htlwrn.model.Product;
 import at.ac.htlwrn.model.PurchaseOrder;
 import at.ac.htlwrn.service.PurchaseOrderService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import org.apache.commons.lang3.Validate;
@@ -66,7 +67,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     private void copyProductList(PurchaseOrderDto orderDto, PurchaseOrder order) {
         if (orderDto.getProductList() != null) {
-            order.setProductList(new ArrayList<>());
+            order.setProductList(new ArrayList<OrderedProducts>());
             for (ProductDto productDto : orderDto.getProductList()) {
                 Assert.notNull(productDto, "productDto must not be null");
                 Assert.notNull(productDto.getId(), "productDto.Id must not be null");

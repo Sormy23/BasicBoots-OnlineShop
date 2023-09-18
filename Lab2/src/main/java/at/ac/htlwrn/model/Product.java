@@ -12,10 +12,6 @@ public class Product {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    //n:m-Beziehung
-
-    //end
-
     @Column(nullable = false)
     private String name;
 
