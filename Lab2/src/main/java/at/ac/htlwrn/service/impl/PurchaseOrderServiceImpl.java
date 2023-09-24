@@ -71,6 +71,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
             for (ProductDto productDto : orderDto.getProductList()) {
                 Assert.notNull(productDto, "productDto must not be null");
                 Assert.notNull(productDto.getId(), "productDto.Id must not be null");
+                System.out.println("----------------------------------");
                 addProductToList(productDto, order);
             }
         }
