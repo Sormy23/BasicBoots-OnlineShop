@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ProductService} from "../core/product.service";
@@ -6,6 +6,7 @@ import {CartService} from "../core/cart.service";
 import {OrderService} from "../core/order.service";
 import {Order} from "../model/order.model";
 import {BasketComponent} from "../basket/basket.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-order',
@@ -14,9 +15,10 @@ import {BasketComponent} from "../basket/basket.component";
 })
 export class OrderComponent implements OnInit{
 
-    constructor(private formBuilder: FormBuilder,private router: Router, private productService: ProductService, private cartService: CartService, private orderService: OrderService, private basket: BasketComponent) { }
+    constructor(private modalService: BsModalService, private formBuilder: FormBuilder,protected router: Router, private productService: ProductService, private cartService: CartService, private orderService: OrderService, private basket: BasketComponent) { }
 
     addForm: FormGroup = new FormGroup({});
+    modalRef: BsModalRef;
 
     ngOnInit() {
         this.addForm = this.formBuilder.group({
@@ -30,7 +32,7 @@ export class OrderComponent implements OnInit{
         console.log("Generated a new form")
     }
 
-    onSubmit() {
+    onSubmit(successModal: TemplateRef<any>) {
       console.log("Create order: " + this.addForm.value);
 
       let order: Order = new Order();
@@ -56,9 +58,11 @@ export class OrderComponent implements OnInit{
 
       this.cartService.cart = [];
       this.router.navigateByUrl("");
+      this.modalRef = this.modalService.show(successModal);
     }
 
     onCancel() {
         this.router.navigateByUrl("/basket");
     }
+
 }
