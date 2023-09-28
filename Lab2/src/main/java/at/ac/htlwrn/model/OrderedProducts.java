@@ -1,5 +1,7 @@
 package at.ac.htlwrn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -17,6 +19,7 @@ public class OrderedProducts {
 
     @ManyToOne
     @JoinColumn(name = "purchaseOrder_id")
+    @JsonIgnore
     private PurchaseOrder purchaseOrder;
 
     private int quantity;
