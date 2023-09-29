@@ -14,6 +14,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { OrderComponent } from './order/order.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap/modal";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
     ImprintComponent,
     NotFoundComponent,
     OrderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

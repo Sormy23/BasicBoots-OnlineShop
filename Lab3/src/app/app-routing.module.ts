@@ -8,6 +8,7 @@ import { ImprintComponent } from './imprint/imprint.component';
 import { BasketComponent } from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'imprint', component: NotFoundComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
