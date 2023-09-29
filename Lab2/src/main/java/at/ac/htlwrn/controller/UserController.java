@@ -6,6 +6,7 @@ import at.ac.htlwrn.model.User;
 import at.ac.htlwrn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +25,13 @@ public class UserController {
     }
 
     @GetMapping
-    //@Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<List<User>> listUser(){
         return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched successfully.",userService.findAll());
     }
 
     @GetMapping("/{id}")
-    //@Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<User> getById(@PathVariable Long id){
         return new ApiResponse<>(HttpStatus.OK.value(), "User fetched successfully.",userService.findById(id));
     }

@@ -8,6 +8,7 @@ import at.ac.htlwrn.model.User;
 import at.ac.htlwrn.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,22 +29,26 @@ public class PurchaseOrderController {
     }
 
     @GetMapping
+    @Secured("ROLE_ADMIN")
     public ApiResponse<List<PurchaseOrder>> listOrders() {
         return new ApiResponse<>(HttpStatus.OK.value(), "Product list fetched successfully.", purchaseOrderService.find(false, false)); //all
     }
 
     @GetMapping("/{id}")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<PurchaseOrder> getById(@PathVariable Long id){
         return new ApiResponse<>(HttpStatus.OK.value(), "Order fetched successfully.", purchaseOrderService.findById(id));
     }
 
     @PutMapping("/cancel/{id}")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<Void> cancel(@PathVariable Long id) {
         purchaseOrderService.cancel(id);
         return new ApiResponse<>(HttpStatus.OK.value(), "Order canceled successfully.", null);
     }
 
     @PutMapping("/finish/{id}")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<Void> finish(@PathVariable Long id) {
         purchaseOrderService.finish(id);
         return new ApiResponse<>(HttpStatus.OK.value(), "Order finished successfully.", null);
