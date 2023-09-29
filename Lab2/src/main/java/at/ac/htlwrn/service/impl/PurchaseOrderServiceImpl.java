@@ -40,11 +40,6 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
         logger.info("Saving Order new orderDto {}", orderDto.getName());
 
-        Optional<PurchaseOrder> order = purchaseOrderDao.findByName(orderDto.getName());
-        if (order.isPresent()) {
-            logger.warn("Purchase Order {} already exists", orderDto.getName());
-            throw new OrderAlreadyExistsException("Order already exists!");
-        }
         PurchaseOrder newOrder = new PurchaseOrder();
         newOrder.setAnrede(orderDto.getAnrede());
         newOrder.setCity(orderDto.getCity());
