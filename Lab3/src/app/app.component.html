@@ -20,7 +20,7 @@
           <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><i class="bi bi-cart3"></i><span id="count_badge" class="my_badge badge-pill badge-light">{{cartService.getBasketAmount()}}</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [class.active]="getURL().startsWith('/login')" routerLink="/logi">Login</a>
+          <a class="nav-link" [class.active]="getURL().startsWith('/login')" routerLink="/login">Login</a>
         </li>
       </ul>
       <form class="d-flex">

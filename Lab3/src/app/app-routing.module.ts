@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'basket', component: BasketComponent },
   { path: 'order', component: OrderComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', component: NotFoundComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

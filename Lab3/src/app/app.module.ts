@@ -15,6 +15,8 @@ import { OrderComponent } from './order/order.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap/modal";
 import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from "./core/authentication.service";
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     OrderComponent,
     LoginComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [ProductService, BasketComponent],
+  providers: [ProductService, BasketComponent, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
