@@ -1,9 +1,12 @@
 .error{
   color: #FF0000;
 }
-.login-container {
-  display: flex;
-  flex-direction: column;
-  background-color: blanchedalmond;
-  margin: 20vh auto 10vh;
+
+.login-component {
+  padding: 5px;
+  border: #dadee3 1px solid !important;
+  border-radius: 10px;
+  margin-top: 100px;
+  margin-bottom: 120px;
+  width: 40%;
 }
