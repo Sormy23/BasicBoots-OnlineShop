@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("admin");
       }else {
         this.invalidLogin = true;
-        window.alert(data.message);
+        console.log(data.message);
       }
     });
   }

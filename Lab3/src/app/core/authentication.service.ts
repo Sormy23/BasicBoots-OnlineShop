@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
 export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
-  baseUrl = environment.apiUrl+'/token/generate-token';
+  baseUrl = environment.apiUrl+'/token/generate-token/';
 
   login(loginPayload: any) : Observable<ApiResponse<AuthToken>> {
     return this.http.post<ApiResponse<AuthToken>>(this.baseUrl, loginPayload);
