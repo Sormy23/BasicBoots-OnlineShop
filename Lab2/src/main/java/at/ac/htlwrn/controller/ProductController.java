@@ -11,6 +11,7 @@ import at.ac.htlwrn.service.ProductService;
 import at.ac.htlwrn.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,11 +47,13 @@ public class ProductController {
     }
 
     @PutMapping("/update")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<Product> updateProducts(@RequestBody ProductDto product) {
         return new ApiResponse<>(HttpStatus.OK.value(), "Product updated successfully.", productService.update(product));
     }
 
     @PutMapping("/deactivate/{id}")
+    @Secured("ROLE_ADMIN")
     public ApiResponse<Void> deactivateProduct(@PathVariable Long id) {
         productService.deactivate(id);
         return new ApiResponse<>(HttpStatus.OK.value(), "Product deactivated successfully", null);

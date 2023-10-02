@@ -12,5 +12,5 @@ INSERT INTO productOrder (anrede, name, street, zipCode, city, date, price) VALU
 INSERT INTO productOrder (anrede, name, street, zipCode, city, date, price) VALUES ('Herr', 'Dreck', 'Gasse', '2700', 'Neustadt', '2023-05-01', 7.99);
 INSERT INTO productOrder (anrede, name, street, zipCode, city, date, price) VALUES ('Frau', 'Wesba', 'Gasse', '2700', 'Neustadt', '2023-05-01', 37065.99);
 
---Password alex123
-INSERT INTO User (id, firstname, lastname, username, password, salary, age) VALUES (-1, 'Sven','Oberwalder', 'sven','$2a$04$4vwa/ugGbBVDvbWaKUVZBuJbjyQyj6tqntjSmG8q.hi97.xSdhj/2', 3456, 33);
+--Password sven
+INSERT INTO User (id, firstname, lastname, username, password, salary, age) VALUES (-1, 'Sven','Oberwalder', 'sven','$2a$12$hf4x4zTGDN63j7WCnkRkiORSNXdxmJ95R3CkgtL9jRnKLdjuc4lbO', 3456, 33);
