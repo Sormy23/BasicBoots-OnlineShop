@@ -26,9 +26,11 @@ export class LoginComponent implements OnInit {
       if(data.status == 200) {
         window.localStorage.setItem('token', data.result.token);
         this.router.navigateByUrl("admin");
+      } else {
+        this.invalidLogin = true;
+        alert(data.message);
       }
     });
-    this.invalidLogin = true;
   }
 
   ngOnInit() {

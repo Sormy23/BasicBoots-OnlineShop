@@ -23,6 +23,8 @@ public class PurchaseOrderControllerTest {
     @LocalServerPort
     private int port;
 
+    //TODO: Test for ordres fail because of the missing authentication
+
     @Test
     public void whenPostOnSaveOrderReturnOK() {
         PurchaseOrderDto order = new PurchaseOrderDto();

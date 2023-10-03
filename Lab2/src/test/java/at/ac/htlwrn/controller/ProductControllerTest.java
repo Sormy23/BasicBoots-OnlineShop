@@ -21,6 +21,8 @@ public class ProductControllerTest {
     @LocalServerPort
     private int port;
 
+    //TODO: Test for products fail because of the missing authentication
+
     @Test
     public void whenPostOnSaveReturnOK() {
         ProductDto product = new ProductDto();
