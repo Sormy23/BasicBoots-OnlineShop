@@ -35,7 +35,7 @@
 
 <div id="placeholder"></div>
 
-<div class="d-flex flex-column h-100" id="footer">
+<div class="d-flex flex-column h-100" id="footer" [class.visually-hidden]="getURL().startsWith('/admin')">
   <!-- FOOTER -->
   <footer class="w-100 py-4 flex-shrink-0">
     <div class="container py-4">

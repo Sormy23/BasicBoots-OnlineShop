@@ -23,18 +23,19 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls['password'].value
     }
     this.authenticateService.login(loginPayload).subscribe(data => {
-      if(data.status == 200) {
         window.localStorage.setItem('token', data.result.token);
         this.router.navigateByUrl("admin");
-      } else {
+      }, error => {
         this.invalidLogin = true;
-        alert(data.message);
+        console.log(error.message);
       }
-    });
+    );
   }
 
   ngOnInit() {
-    window.localStorage.removeItem('token');
+    if (window.localStorage.getItem('token') != null) {
+      this.router.navigateByUrl("admin");
+    }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]

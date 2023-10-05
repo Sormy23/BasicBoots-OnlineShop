@@ -12,7 +12,7 @@ import { LoginComponent } from "./login/login.component";
 import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: AdminComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'imprint', component: NotFoundComponent },
   { path: 'basket', component: BasketComponent },
