@@ -1,0 +1,69 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink=""><img alt="Boot" id="logo" src="assets/images/white_boot.png" width="30" height="30">reBOOT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="getURL() == '/'" aria-current="page" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [class.active]="getURL().startsWith('/shop')" routerLink="/shop">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="getURL().startsWith('/imprint')" routerLink="/imprint">Impressum</a>
+        </li>
+        <li class="nav-item" [class.visually-hidden]="isBasketEmpty()">
+          <a class="nav-link" [class.active]="getURL().startsWith('/basket')" routerLink="/basket"><i class="bi bi-cart3"></i><span id="count_badge" class="my_badge badge-pill badge-light">{{cartService.getBasketAmount()}}</span></a>
+        </li>
+        <li class="nav-item" >
+          <i class="bi bi-person nav-link" [class.active]="getURL().startsWith('/login') || getURL().startsWith('/admin')" routerLink="/login"></i>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control sm search-bar" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-link search-icon" type="submit"><span class="material-symbols-outlined search">search</span></button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<div class="d-flex flex-column h-100" id="footer" [class.visually-hidden]="getURL().startsWith('/admin')">
+  <!-- FOOTER -->
+  <footer class="w-100 py-4 flex-shrink-0">
+    <div class="container py-4">
+      <div class="row gy-4 gx-5">
+        <div class="col-lg-6 col-md-6">
+          <h5 class="h1 text-white">reBOOT</h5>
+          <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <p class="small mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">reboot.com</a></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="text-white mb-3">Quick links</h5>
+          <ul class="list-unstyled">
+            <li><a routerLink="">Home</a></li>
+            <li><a routerLink="/shop">Shop</a></li>
+            <li><a routerLink="/imprint">Impressum</a></li>
+            <li><a routerLink="/basket">Warenkorb</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-white mb-3">Newsletter</h5>
+          <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <form action="#">
+            <div class="input-group mb-3">
+              <input id="email-field" class="form-control bg-white" type="email" placeholder="E-Mail" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-primary" id="button-addon2" type="button"><i class="bi bi-send-check"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

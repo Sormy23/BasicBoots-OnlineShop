@@ -1,0 +1,30 @@
+<!-- Logout button -->
+<button id="logout" (click)="logout()" type="button" class="btn btn-danger">Logout <i class="bi bi-box-arrow-left"></i></button>
+
+<!-- Orders List -->
+
+<div class="container" id="order">
+  <div class="row row-cols-1 " *ngFor="let order of orders">
+    <div class="col subOrders">
+      <span id="name">{{order.vorname}}&nbsp;{{order.name}}</span>
+      <span id="date">{{order.date}}</span>
+    </div>
+
+
+    <div class="container text-center" >
+      <div class="row row-cols-1 row-cols-sm-3 products" *ngFor="let product of order.productList">
+        <div class="col">
+          <img src="{{product.img}}" width="200" height="200" draggable="true" alt="shoes">
+        </div>
+        <div class="col align-self-center">
+          <h3>{{product.name}}</h3>
+        </div>
+        <div class="col align-self-center">
+          <div>
+            <span class="cart_sum badge text-bg-info">{{product.quantity}} Piece</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

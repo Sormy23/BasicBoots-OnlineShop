@@ -1,0 +1,29 @@
+#logout {
+  position: fixed;
+  left: 10px;
+  bottom: 20px;
+}
+
+#order {
+  margin-top: 13vh;
+  margin-bottom: 3vh;
+}
+
+.subOrders {
+  margin-bottom: 10px;
+  background: lightgray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 5px 5px 10px;
+}
+
+#date {
+  font-size: 15px;
+  margin: 5px 5px 5px 10px;
+}
